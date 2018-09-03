@@ -1,0 +1,16 @@
+//archivos .h y otro .c
+    //archivos .h prototipos
+    //archivos .c cuerpos de funciones
+    //en el main incluimos el .h
+    //#include "calculadora.h"
+    //include " " < > el compilador busca en el directorio donde esta ubicado todas las bibliotecas
+    //" " busca la biblioteca en donde se ubica el proyecto
+                                //path relativo path absoluta
+
+    //#include "c:\\proyectos\\funciones\\calculadoras.h"       ruta absoluta (path completo)
+    //  .\\  directotio actualmente(en el proyecto) WINDOWS
+    //  ./   directotio actualmente(en el proyecto)
+    //#include ".\\calculadora.h" en la carpeta donde esta el proyecto encontraras este archivo(PATH RELATIVO)
+
+    //***podremos retroceder el path con ../
+    //retrocedemos con "../bibioltecas/calculadora.h"
