@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct
 {
@@ -37,7 +38,7 @@ int addEmployee(eEmployee* list, int len, int id, char name[],char lastName[],fl
         list[id].isEmpty=0;
         retorno=0;
     }
- return -1;
+ return retorno;
 }
 int findEmployeeById(eEmployee* list, int len,int id){
     int retorno=-1;
@@ -67,6 +68,47 @@ int removeEmployee(eEmployee* list, int len, int id){
     }
  return retorno;
 }
+int sortEmployees(eEmployee* list, int len, int order){
+    eEmployee aux;
+
+    int retorno=-1;
+    if (list!=NULL && len>0){
+        for (int i=0;i<len-1;i++){
+            for (int j=i+1;j<len;j++){
+                if (order==1){
+                    if (strcmp(list[i].lastName,list[j].lastName)>0){
+                    aux = list[i];
+                    list[i]=list[j];
+                    list[j]=aux;
+                } else if (strcmp(list[i].lastName,list[j].lastName)==0){
+                    if (list[i].sector>list[j].sector){
+                        aux = list[i];
+                        list[i]=list[j];
+                        list[j]=aux;
+                        }
+                    }
+                }else {     //si no se ordena de manera asceebte (1) hacemelo descendente
+                if (strcmp(list[i].lastName,list[j].lastName)<0){
+                    aux = list[i];
+                    list[i]=list[j];
+                    list[j]=aux;
+                } else if (strcmp(list[i].lastName,list[j].lastName)==0){
+                    if (list[i].sector<list[j].sector){
+                        aux = list[i];
+                        list[i]=list[j];
+                        list[j]=aux;
+                        }
+                    }
+                }
+            }
+        }
+    retorno=0;
+    }
+ return retorno;
+}
+
+
+
 
 
 
