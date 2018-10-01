@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ArrayEmployees.h"
-#include "ArrayEmployees.c"
+
 #define LEN 1000
 
 int main()
 {
 eEmployee list[LEN];
-initEmployees(list,LEN);
+//initEmployees(list,LEN);
 int respuesta;
 
 do{

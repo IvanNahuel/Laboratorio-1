@@ -1,7 +1,6 @@
 #ifndef ArrayEmployees_H_INCLUDED
 #define ArrayEmployees_H_INCLUDED
-typedef struct
-{
+typedef struct{
  int id;
  char name[51];
  char lastName[51];

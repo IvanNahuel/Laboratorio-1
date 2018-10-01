@@ -1,6 +1,8 @@
+#include "ArrayEmployees.h"
+
 int initEmployees(eEmployee* list,int len){
     int retorno=-1;
-    if (list!=NULL && len>0){
+    if (list != NULL && len>0){
         for (int i=0;i<len;i++){
             list[i].isEmpty=1;
             retorno=0;
