@@ -10,10 +10,17 @@
 	<stdio.h>
 	<stdlib.h>
 
-1538417006 source:c:\users\alumno\desktop\tp 2\main.c
+1538435837 source:c:\users\alumno\desktop\tp 2\main.c
 	<stdio.h>
 	<stdlib.h>
-	"ArrayEmployees.h"
+	"ArrayEmployees.c"
 
 1538417006 c:\users\alumno\desktop\tp 2\arrayemployees.h
+
+1538434671 source:c:\users\alumno\desktop\tp 2\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1538436002 c:\users\alumno\desktop\tp 2\arrayemployees.c
 

@@ -1,17 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-typedef struct
-{
- int id;
- char name[51];
- char lastName[51];
- float salary;
- int sector;
- int isEmpty;
-}eEmployee;
-
 int initEmployees(eEmployee* list,int len){
     int retorno=-1;
     if (list!=NULL && len>0){
@@ -70,7 +56,6 @@ int removeEmployee(eEmployee* list, int len, int id){
 }
 int sortEmployees(eEmployee* list, int len, int order){
     eEmployee aux;
-
     int retorno=-1;
     if (list!=NULL && len>0){
         for (int i=0;i<len-1;i++){
@@ -107,6 +92,30 @@ int sortEmployees(eEmployee* list, int len, int order){
  return retorno;
 }
 
+int printEmployees(eEmployee* list, int length){
+    int retorno=-1;
+    if (list!=NULL && length>0){
+        for (int i=0;i<length;i++){
+            if (list[i].isEmpty==0){
+            printf("%d  %s   %s  %f  %d",list[i].id,list[i].lastName,list[i].name,list[i].salary,list[i].sector);
+            retorno=0;
+            }
+        }
+    }
+ return retorno;
+}
+int PedirRespuesta(){
+    int respuesa;
+    printf("\nIngrese respuesta");
+    ImprimirMenu();
+    printf("\n");
+    scanf("%d",&respuesa);
+    while (respuesa<0 ||respuesa>5){
+        printf("\nError, reingrese respuesta correcta: ");
+        scanf("%d",&respuesa);
+    }
+    return respuesa;
+}
 
 
 
