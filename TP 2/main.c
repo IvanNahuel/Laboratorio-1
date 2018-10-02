@@ -38,20 +38,18 @@ do{
 
         printf("\nIngrese sector: ");
         scanf("%d",&auxSector);
-
         addEmployee(list,LEN,indexFree,auxNombre,auxApellido,auxSalary,auxSector);
         }
-
-
         break;
     case 2:
         idModificar = idAModificarRespuesta();
-        findEmployeeById(list,LEN,idAModificarRespuesta());
-
-
-
+        if (findEmployeeById(list,LEN,idModificar)!=-1){
+        modificarEmploy(list,LEN,idModificar);
+        }
         break;
     case 3:
+        printf("\nIngrese el id del empleado que desea eliminar:");
+
 
         break;
     case 4:

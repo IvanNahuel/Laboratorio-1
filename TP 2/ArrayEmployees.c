@@ -144,13 +144,23 @@ return retorno;
 }
 int modificarEmploy(eEmployee* list,int len,int id){
     int retorno=-1;
-
         if (list!=NULL&& len>0){
+            printf("\nIngrese Apellido: ");
+            fflush(stdin);
+            gets(list[id].lastName);
 
+            printf("\nIngrese Nombre: ");
+            fflush(stdin);
+            gets(list[id].name);
 
+            printf("\nIngrese salario: ");
+            scanf("%f",&list[id].salary);
+
+            printf("\nIngrese sector: ");
+            scanf("%d",&list[id].sector);
+            retorno=0;
         }
-
-
+    return retorno;
 }
 
 
