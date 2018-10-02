@@ -10,10 +10,11 @@ eEmployee list[LEN];
 
 char auxNombre[50];
 char auxApellido[50];
-float auxSalary;
-int auxSector;
+float AuxSalario;
+int AuxSector;
 
 int idModificar;
+int idEliminar;
 
 initEmployees(list,LEN);
 int respuesta;
@@ -34,11 +35,16 @@ do{
         gets(auxNombre);
 
         printf("\nIngrese salario: ");
-        scanf("%f",&auxSalary);
+        scanf("%f",&AuxSalario);
+
+        printf("%f",AuxSalario);
 
         printf("\nIngrese sector: ");
-        scanf("%d",&auxSector);
-        addEmployee(list,LEN,indexFree,auxNombre,auxApellido,auxSalary,auxSector);
+        scanf("%d",&AuxSector);
+
+        printf("%d",AuxSector);
+
+        addEmployee(list,LEN,indexFree,auxNombre,auxApellido,AuxSalario,AuxSector);
         }
         break;
     case 2:
@@ -49,10 +55,12 @@ do{
         break;
     case 3:
         printf("\nIngrese el id del empleado que desea eliminar:");
-
+        scanf("%d",&idEliminar);
+        removeEmployee(list,LEN,idEliminar);
 
         break;
     case 4:
+        printEmployees(list,LEN);
 
         break;
         }

@@ -18,6 +18,9 @@ int initEmployees(eEmployee* list,int len){
 */
 
 int addEmployee(eEmployee* list, int len, int id, char name[],char lastName[],float salary,int sector){
+    printf("%f",salary);
+    printf("%d",sector);
+
     int retorno=-1;
     if (list!=NULL && len>0){
         strcpy (list[id].name,name);
@@ -100,7 +103,8 @@ int printEmployees(eEmployee* list, int length){
     if (list!=NULL && length>0){
         for (int i=0;i<length;i++){
             if (list[i].isEmpty==0){
-            printf("%d  %s   %s  %f  %d",list[i].id,list[i].lastName,list[i].name,list[i].salary,list[i].sector);
+            printf("\n");
+            printf("%d  %s   %s  %.f  %d",list[i].id,list[i].lastName,list[i].name,list[i].salary,list[i].sector);
             retorno=0;
             }
         }
