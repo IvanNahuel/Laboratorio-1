@@ -1,5 +1,6 @@
 #include "ArrayEmployees.h"
-
+#include <stdio.h>
+#include <stdlib.h>
 int initEmployees(eEmployee* list,int len){
     int retorno=-1;
     if (list != NULL && len>0){
@@ -117,6 +118,39 @@ int PedirRespuesta(){
         scanf("%d",&respuesa);
     }
     return respuesa;
+}
+void ImprimirMenu(){
+    printf("\n1-Alta");
+    printf("\n2-Modificar");
+    printf("\n3-Baja");
+    printf("\n4-Informar");
+}
+int obtenerEspacioLibre(eEmployee* list,int len){
+    int retorno=-1;
+    for (int i=0;i<len;i++){
+        if (list[i].isEmpty==1){
+            retorno =i;
+            break;
+        }
+    }
+    return retorno;
+}
+int idAModificarRespuesta(){
+    int retorno;
+    printf("\nIngrese el id del empleado que desea modificar: ");
+    scanf("%d",&retorno);
+
+return retorno;
+}
+int modificarEmploy(eEmployee* list,int len,int id){
+    int retorno=-1;
+
+        if (list!=NULL&& len>0){
+
+
+        }
+
+
 }
 
 
