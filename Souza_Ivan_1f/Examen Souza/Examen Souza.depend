@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1538526400 source:d:\examen souza\examen souza\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Funciones.h"
+	"InputsValidaciones.h"
+
+1538524122 d:\examen souza\examen souza\funciones.h
+
+1538525418 source:d:\examen souza\examen souza\inputsvalidaciones.c
+	"InputsValidaciones.h"
+
+1538526531 source:d:\examen souza\examen souza\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Funciones.h"
+	"InputsValidaciones.h"
+
+1538526730 d:\examen souza\examen souza\inputsvalidaciones.h
+
