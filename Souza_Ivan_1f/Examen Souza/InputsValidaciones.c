@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "Funciones.h"
 #include "Funciones.h"
 #include "InputsValidaciones.h"
 int DiaValidar(){
@@ -73,6 +77,28 @@ int ValidarExistenciaDeCodigoDeCliente(eClientes*clientes,int len){
         }while(flagWhile==0);
 return codigoIngresado;
 }
+
+//se ingresa un char, validamos caracteres si es mayor a ese numero error reingrese mas corto, y el mensaje puesto
+//en cadena error
+
+ char validarChares(int caracterMaximo,char cadenaMensaje,char cadenaError){
+    int cantidad;
+    char retorno[60];
+    do {
+            printf(cadenaMensaje);
+
+            fgets(retorno,sizeof(retorno)-2,stdin);
+            cantidad = strlen(retorno);
+            retorno[cantidad-1] = '\0';
+            //printf("%s", retorno);
+
+
+    }while(cantidad-1>caracterMaximo);
+
+
+return retorno;
+ }
+
 
 
 

@@ -8,10 +8,11 @@
 
 int main()
 {
-    /*
-int importe;
-importe = ImporteValidado();
-*/
+char nombre[60];
+
+*nombre = validarChares(3,"Ingrese nombre: ","Error");
+
+
 }
 
 

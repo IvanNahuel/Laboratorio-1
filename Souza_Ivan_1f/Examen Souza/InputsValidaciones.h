@@ -4,7 +4,7 @@ int DiaValidar();
 int MesValidar();
 int AnioValidar();
 
- int ImporteValidado();
+int ImporteValidado();
 int ValidarExistenciaDeCodigoDeJuego(eJuegos*juegos,int len);
 int ValidarExistenciaDeCodigoDeCliente(eClientes*clientes,int len);
 

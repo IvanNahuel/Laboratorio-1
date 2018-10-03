@@ -20,3 +20,29 @@
 
 1538526730 d:\examen souza\examen souza\inputsvalidaciones.h
 
+1538528427 source:d:\souza_ivan_1f\examen souza\inputsvalidaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Funciones.h"
+	"Funciones.h"
+	"InputsValidaciones.h"
+
+1538524122 d:\souza_ivan_1f\examen souza\funciones.h
+
+1538527041 d:\souza_ivan_1f\examen souza\inputsvalidaciones.h
+
+1538527595 source:d:\souza_ivan_1f\examen souza\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Funciones.h"
+	"InputsValidaciones.h"
+
+1538527127 source:d:\souza_ivan_1f\examen souza\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Funciones.h"
+	"InputsValidaciones.h"
+
