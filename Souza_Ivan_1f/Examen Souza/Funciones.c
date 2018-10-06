@@ -128,6 +128,8 @@ void altaClientes(eClientes*clientes,int len){
 
         ValidarNumeroTelefonico(clientes[index].telefono);
 
+        clientes[index].isEmpty=0;
+
     }
 }
 int obtenerEspacioLibreClientes(eClientes*clientes,int len){
@@ -143,31 +145,32 @@ int obtenerEspacioLibreClientes(eClientes*clientes,int len){
 }
 
 void ModificarCliente(eClientes*clientes,int len,int idModificar){
+    int flag=1;
+
     int i;
     for (i=0;i<len;i++){
-        if (clientes[i].codigoCliente==idModificar){
-        printf("\nIngrese apellido del cliente: ");
-        fflush(stdin);
-        gets(clientes[idModificar].apellido);
+        if ( clientes[i].isEmpty==0 && clientes[i].codigoCliente==idModificar){
 
-        printf("\nIngrese nombre del cliente: ");
-        fflush(stdin);
-        gets(clientes[idModificar].nombre);
+        validarChares(clientes[idModificar].apellido,51,"\nIngrese apellido del cliente: ","Error Reingrese un apellido mas corto: ");
 
-        printf("\nIngrese Domicilio del cliente: ");
-        fflush(stdin);
-        gets(clientes[idModificar].domicilio);
+        validarChares(clientes[idModificar].nombre,51,"\nIngrese nombre del cliente: ","Error Reingrese un nombre mas corto: ");
 
-        printf("\nIngrese telefono del cliente: ");
-        fflush(stdin);
-        gets(clientes[idModificar].telefono);
+        validarChares(clientes[idModificar].domicilio,51,"Ingrese domicilio del cliente: ","Error Reingrese un domicilio mas corto: ");
+
+        ValidarNumeroTelefonico(clientes[idModificar].telefono);
+
+        flag=0;
+        break;
         }
+    }
+    if (flag){
+        printf("\nError no se ha encontrado el codigo de cliente ingresado reintente ");
     }
 }
 void BajaClientes(eClientes*clientes,int len,int idBajar){
 int i;
 for (i=0;i<len;i++){
-    if (clientes[i].codigoCliente==idBajar){
+    if (clientes[i].codigoCliente==idBajar &&clientes[i].isEmpty==0){
         clientes[i].isEmpty=1;
         break;
         }
@@ -176,10 +179,10 @@ for (i=0;i<len;i++){
 
 void listarClientes(eClientes* clientes,int len){
     int i;
+    sortClientes(clientes,len);                //ordenamelo
     for (i=0;i<len;i++){
         if (clientes[i].isEmpty==0){
-            sortClientes(clientes,len);                //ordenamelo
-            printf("%3d   %15s   %15s    %20s    %20s",clientes[i].codigoCliente,clientes[i].apellido,clientes[i].nombre,clientes[i].domicilio,clientes[i].telefono);
+            printf("\n%3d        %15s        %15s        %20s         %20s",clientes[i].codigoCliente,clientes[i].apellido,clientes[i].nombre,clientes[i].domicilio,clientes[i].telefono);
         }
     }
 }
@@ -191,16 +194,16 @@ int sortClientes(eClientes* list, int len){
     if (list!=NULL && len>0){
         for ( i=0;i<len-1;i++){
             for ( j=i+1;j<len;j++){
-                if ( strcmp(list[i].apellido,list[j].apellido)>0){           //si i es menor a j
+                if ( list[i].isEmpty==0 && list[j].isEmpty==0 && strcmp(list[i].apellido,list[j].apellido)>0){           //si i es menor a j
                     aux = list[i];
                     list[i]=list[j];
                     list[j]=aux;
                 }
-                else if ( strcmp(list[i].apellido,list[j].apellido)==0){
+                else if (list[i].isEmpty==0 && list[j].isEmpty==0 && strcmp(list[i].apellido,list[j].apellido)==0){
                     if (strcmp(list[i].nombre,list[j].nombre)>0){
-                    aux = list[i];
-                    list[i]=list[j];
-                    list[j]=aux;
+                        aux = list[i];
+                        list[i]=list[j];
+                        list[j]=aux;
                     }
                 }
             }

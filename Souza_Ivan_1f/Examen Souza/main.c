@@ -18,27 +18,37 @@ int main()
     initClientes(clientes,LEN);
     initAlquileres(alquileres,LEN);
 
+    //harcodeo
+        juegos[0].codigoJuego=0;
+
+        strcpy(juegos[0].descripcion,"Call of duty");
+
+        juegos[0].importe = 15;
+
+        juegos[0].isEmpty=0;
+
+
+        juegos[1].codigoJuego=1;
+
+        strcpy(juegos[1].descripcion,"Halo 5");
+
+        juegos[1].importe = 150;
+
+        juegos[1].isEmpty=0;
+
+        listarJuego(juegos,LEN);
+
 
 
     //--------------ZONA DE PRUEBAS-------------------
-    printf("\nAltas\n");
-    altaJuegos(juegos,LEN);
-    altaJuegos(juegos,LEN);
-    altaJuegos(juegos,LEN);
-    altaJuegos(juegos,LEN);
-
-    listarJuego(juegos,LEN);
 
 
+    //ALTA, BAJA, MODIFICACION  Y LISTADO DE JUEGO VALIDADAS
+    //ALTA, BAJA, MODIFICACION  Y LISTADO DE CLIENTES VALIDADAS
 
+    //FALTA VALIDAR EL ALTA DE ALQUILERES <-----(TENER EN CUENTA QUE DEBE EXISTIR UN CODIGO DE *JUEGO* Y DE *CLIENTE* ) *******
 
-    //HASTA AHORA VALIDE ALTA DE JUEGOS, Y DE CLIENTES
-    //ALTA, BAJA, MODIFICACION DE JUEGO VALIDADAS
-
-
-
-    //FALTA VALIDAR BAJA Y MODIFICACION DE JUEGOS Y CLIENTES
-
+    //UNA VEZ VALIDADO TODO, SE COMIENZA A ARMAR EL SISTEMA, CON SU RESPECTIVA INTERFAZ#########
 
 
 
