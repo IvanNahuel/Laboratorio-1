@@ -35,6 +35,7 @@ int AnioValidar(){
     printf("\ingrese importe: ");
     scanf("%d",&retorno);
     }while(retorno<0);
+    return retorno;
  }
 /*  valida que en la planilla clientes, haya un codigo de juegos existentes, para cargarlos en el campo codigo de juego
 *
@@ -81,23 +82,59 @@ return codigoIngresado;
 //se ingresa un char, validamos caracteres si es mayor a ese numero error reingrese mas corto, y el mensaje puesto
 //en cadena error
 
- char validarChares(int caracterMaximo,char cadenaMensaje,char cadenaError){
+void validarChares(char*retornoParam,int caracterMaximo,char* cadenaMensaje,char* cadenaError){
     int cantidad;
+    int flag=1;
     char retorno[60];
     do {
-            printf(cadenaMensaje);
-
+            if (flag==1){
+            printf("%s",cadenaMensaje);
+            flag=0;
+            }else {
+            printf("%s",cadenaError);
+            }
+            fflush(stdin);
             fgets(retorno,sizeof(retorno)-2,stdin);
             cantidad = strlen(retorno);
             retorno[cantidad-1] = '\0';
-            //printf("%s", retorno);
-
+            //printf("\nla cantidad de letras es: %d\n",cantidad-1);
+            //printf("\n%s\n", retorno);
 
     }while(cantidad-1>caracterMaximo);
+   strcpy(retornoParam,retorno);
+}
+void ValidarNumeroTelefonico(char* pCadena){
+
+    char retorno[50];
+    int cantidad;
+    int i;
+    int flag=0;
+
+    do{
+        printf("\nIngrese un numero telefonico: ");
+        fgets(retorno,sizeof(retorno)-2,stdin);
+        cantidad = strlen(retorno);
+        retorno[cantidad-1] = '\0';
+
+    for (i=0;retorno[i]!='\0';i++){
+        if (retorno[i]<48||retorno[i]>57){
+            printf("\nError Reingrese un numero telefonico valido");
+            flag=0;
+            break;
+            }
+            else{
+            flag=1;
+            }
+        }
+    }while(flag==0);
+    strcpy(pCadena,retorno);
+    //printf("finalizo funcion validad numero");
+}
 
 
-return retorno;
- }
+
+
+
 
 
 

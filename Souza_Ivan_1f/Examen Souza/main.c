@@ -8,12 +8,49 @@
 
 int main()
 {
-char nombre[60];
 
-*nombre = validarChares(3,"Ingrese nombre: ","Error");
+
+    eJuegos juegos[LEN];
+    eClientes clientes[LEN];
+    eAlquileres alquileres[LEN];
+
+    initJuegos(juegos,LEN);
+    initClientes(clientes,LEN);
+    initAlquileres(alquileres,LEN);
+
+
+
+    //--------------ZONA DE PRUEBAS-------------------
+    printf("\nAltas\n");
+    altaJuegos(juegos,LEN);
+    altaJuegos(juegos,LEN);
+    altaJuegos(juegos,LEN);
+    altaJuegos(juegos,LEN);
+
+    listarJuego(juegos,LEN);
+
+
+
+
+    //HASTA AHORA VALIDE ALTA DE JUEGOS, Y DE CLIENTES
+    //ALTA, BAJA, MODIFICACION DE JUEGO VALIDADAS
+
+
+
+    //FALTA VALIDAR BAJA Y MODIFICACION DE JUEGOS Y CLIENTES
+
+
 
 
 }
+
+
+
+
+
+
+
+
 
 
 

@@ -14,7 +14,7 @@ int codigoCliente;
 char apellido[51];
 char nombre[51];
 char domicilio[51];
-char telefono;
+char telefono[21];
 int isEmpty;
 }eClientes;
 

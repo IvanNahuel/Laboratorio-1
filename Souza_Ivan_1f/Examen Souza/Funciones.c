@@ -18,15 +18,15 @@ void altaJuegos(eJuegos*juegos,int len){
     int index;
     index = obtenerEspacioLibre(juegos,len);
     if (index!=-1){
-        juegos[index].codigoJuego;
 
-        printf("\nIngrese la descripcion del juego: ");     //FALTA VALIDAR DESCRIPCION
-        fflush(stdin);
-        gets(juegos[index].descripcion);
+        juegos[index].codigoJuego=index;            //Descripcion validada
+
+        validarChares(juegos[index].descripcion,51,"\nIngrese descripcion: ","\nError Ingrese una descripcion mas corta: ");
 
         juegos[index].importe = ImporteValidado();      //VALIDADO
 
         juegos[index].isEmpty=0;
+        printf("\n!alta exitosa");
     }
 }
 int obtenerEspacioLibre(eJuegos*juegos,int len){
@@ -51,23 +51,29 @@ for (i=0;i<len;i++){
 }
 void ModificarJuego(eJuegos*juegos,int len,int idModificar){
     int i;
-    for (i=0;i<len;i++){
-        if (juegos[i].codigoJuego==idModificar){
-            printf("\nIngrese la descripcion del juego: ");
-            fflush(stdin);
-            gets(juegos[idModificar].descripcion);
+    int flag=1;
 
-            printf("\nIngrese importe: ");
-            scanf("%d",&juegos[idModificar].importe);
+    for (i=0;i<len;i++){
+        if (juegos[i].codigoJuego==idModificar && juegos[i].isEmpty==0 ){
+        printf("\nindex: %d",i);
+        validarChares(juegos[idModificar].descripcion,51,"\nIngrese descripcion: ","\nError Ingrese una descripcion mas corta: ");
+
+        juegos[idModificar].importe = ImporteValidado();      //VALIDADO
+        flag =0;
+        break;
         }
+    }
+    if (flag){
+        printf("\nNo se ha encontrado el indice buscado, verifique que sea el correcto");
     }
 }
 void listarJuego(eJuegos* juego,int len){
     int i;
+    sortEmployees(juego,len);                //ordenamelo
     for (i=0;i<len;i++){
         if (juego[i].isEmpty==0){
-            sortEmployees(juego,len);                //ordenamelo
-            printf("%2d     %10s      %4d",juego[i].codigoJuego,juego[i].descripcion,juego[i].importe);
+            //sortEmployees(juego,len);                //ordenamelo
+            printf("\n%2d     %10s      %4d",juego[i].codigoJuego,juego[i].descripcion,juego[i].importe);
         }
     }
 }
@@ -79,12 +85,13 @@ int sortEmployees(eJuegos* list, int len){
     if (list!=NULL && len>0){
         for ( i=0;i<len-1;i++){
             for ( j=i+1;j<len;j++){
-                if (list[i].importe<list[j].importe){           //si i es menor a j
+                if (list[i].importe < list[j].importe && list[i].isEmpty==0 && list[j].isEmpty==0){           //si i es menor a j
                     aux = list[i];
                     list[i]=list[j];
                     list[j]=aux;
-                }
-                else if (strcmp(list[i].descripcion,list[j].descripcion)>0){
+
+                } else if ( list[i].importe==list[j].importe && strcmp(list[i].descripcion,list[j].descripcion)>0 && list[i].isEmpty==0 && list[j].isEmpty==0 ){
+                    printf("\nOdeno por nombre\n");
                     aux = list[i];
                     list[i]=list[j];
                     list[j]=aux;
@@ -108,26 +115,18 @@ int sortEmployees(eJuegos* list, int len){
 void altaClientes(eClientes*clientes,int len){
     int i;
     int index;
-    index = obtenerEspacioLibre(clientes,len);
+    index = obtenerEspacioLibreClientes(clientes,len);
     if (index!=-1){
+        printf("%d",index);
         clientes[index].codigoCliente=index;
 
-        printf("\nIngrese apellido del cliente: ");     //FALTA VALIDAR
-        fflush(stdin);
-        gets(clientes[index].apellido);
+        validarChares(clientes[index].apellido,51,"\nIngrese apellido del cliente: ","Error Reingrese un apellido mas corto: ");
 
-        printf("\nIngrese nombre del cliente: ");     //FALTA VALIDAR
-        fflush(stdin);
-        gets(clientes[index].nombre);
+        validarChares(clientes[index].nombre,51,"\nIngrese nombre del cliente: ","Error Reingrese un nombre mas corto: ");
 
-        printf("\nIngrese Domicilio del cliente: ");     //FALTA VALIDAR
-        fflush(stdin);
-        gets(clientes[index].domicilio);
+        validarChares(clientes[index].domicilio,51,"Ingrese domicilio del cliente: ","Error Reingrese un domicilio mas corto: ");
 
-        printf("\nIngrese telefono del cliente: ");     //FALTA VALIDAR
-        fflush(stdin);
-        gets(clientes[index].telefono);
-
+        ValidarNumeroTelefonico(clientes[index].telefono);
 
     }
 }
