@@ -17,41 +17,85 @@ int main()
     initJuegos(juegos,LEN);
     initClientes(clientes,LEN);
     initAlquileres(alquileres,LEN);
-
-    //harcodeo
-        juegos[0].codigoJuego=0;
-
-        strcpy(juegos[0].descripcion,"Call of duty");
-
-        juegos[0].importe = 15;
-
-        juegos[0].isEmpty=0;
+    HarcodeoDeAlgunasFunciones(juegos,clientes);
 
 
-        juegos[1].codigoJuego=1;
+    int gestionRespuesta;       //determinara si elegira operar en juegos, clientes o alquileres
+    int respuestaClientes;
+    int respuestaJuegos;
+    int respuestaAlquileres;
 
-        strcpy(juegos[1].descripcion,"Halo 5");
+    do{
+        printf("                                GESTION                           ");
 
-        juegos[1].importe = 150;
+        //
+        //
+        //IMPORTANTE FALTA A LOS SWTICHS REPARTIR SUS CORRESPONDIENTES FUNCIONES, en casa caso su determinada funcion
+        //
+        //
+        gestionRespuesta = ImprimirMenuPrincipalYObtenerRespuesta();
+        switch(gestionRespuesta){
+        case 1:
+        respuestaJuegos = ImprimirMenuJuegos();
+                switch (respuestaJuegos){
+                case 1:
+                //alta
+                break;
+                case 2:
+                //modificar
+                break;
+                case 3:
+                //baja
+                break;
+                case 4:
+                //listar
+                break;
+                case 5:
+                //ir al menu principal
+                continue;
+                break;
+                }
+            break;
+        case 2:
+            respuestaClientes = ImprimirMenuClientes();
+                switch (respuestaClientes){
+                case 1:
+                //alta
+                break;
+                case 2:
+                //modificar
+                break;
+                case 3:
+                //baja
+                break;
+                case 4:
+                //listar
+                break;
+                case 5:
+                //ir al menu principal
+                continue;
+                break;
+            }
+            break;
+        case 3:
+            respuestaAlquileres = ImprimirMenuAlquileres();
+            switch(respuestaAlquileres){
+                case 1:
+                    //da de alta a los nuevos alquileres
+                break;
 
-        juegos[1].isEmpty=0;
+                case 2:
+                continue;           //cortar el switch y que imprima el menu
+                break;
+        }
+            break;
+        case 4:
+            //salir
 
-        listarJuego(juegos,LEN);
+            break;
+        }
 
-
-
-    //--------------ZONA DE PRUEBAS-------------------
-
-
-    //ALTA, BAJA, MODIFICACION  Y LISTADO DE JUEGO VALIDADAS
-    //ALTA, BAJA, MODIFICACION  Y LISTADO DE CLIENTES VALIDADAS
-
-    //FALTA VALIDAR EL ALTA DE ALQUILERES <-----(TENER EN CUENTA QUE DEBE EXISTIR UN CODIGO DE *JUEGO* Y DE *CLIENTE* ) *******
-
-    //UNA VEZ VALIDADO TODO, SE COMIENZA A ARMAR EL SISTEMA, CON SU RESPECTIVA INTERFAZ#########
-
-
-
+    }while(gestionRespuesta!=4);
 }
 
 

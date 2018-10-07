@@ -26,7 +26,7 @@ void altaJuegos(eJuegos*juegos,int len){
         juegos[index].importe = ImporteValidado();      //VALIDADO
 
         juegos[index].isEmpty=0;
-        printf("\n!alta exitosa");
+        //printf("\n!alta exitosa");
     }
 }
 int obtenerEspacioLibre(eJuegos*juegos,int len){
@@ -117,7 +117,7 @@ void altaClientes(eClientes*clientes,int len){
     int index;
     index = obtenerEspacioLibreClientes(clientes,len);
     if (index!=-1){
-        printf("%d",index);
+        //printf("%d",index);
         clientes[index].codigoCliente=index;
 
         validarChares(clientes[index].apellido,51,"\nIngrese apellido del cliente: ","Error Reingrese un apellido mas corto: ");
@@ -235,6 +235,8 @@ void altaAlquileres(eAlquileres*alquileres,int len,eJuegos*juegos,eClientes*clie
     int index;
     index = obtenerEspacioLibreAlquileres(alquileres,len);
     if (index!=-1){
+        printf("\n%d",i);
+
         alquileres[index].CodigoAlquiler = index;          //autoIncrimental, el primero libre
 
         alquileres[index].CodigoJuego = ValidarExistenciaDeCodigoDeJuego(juegos,len);//---VALIDADO
@@ -248,3 +250,156 @@ void altaAlquileres(eAlquileres*alquileres,int len,eJuegos*juegos,eClientes*clie
         alquileres[index].fecha.anio = AnioValidar();   //----VALIDADO
     }
 }
+void HarcodeoDeAlgunasFunciones(eJuegos*juegos,eClientes*clientes){
+        juegos[0].codigoJuego=0;
+
+        strcpy(juegos[0].descripcion,"Call of duty");
+
+        juegos[0].importe = 15;
+
+        juegos[0].isEmpty=0;
+
+
+        juegos[1].codigoJuego=1;
+
+        strcpy(juegos[1].descripcion,"Halo 5");
+
+        juegos[1].importe = 150;
+
+        juegos[1].isEmpty=0;
+
+        //listarJuego(juegos,LEN);
+
+
+        //harcodeo cliente
+
+
+        clientes[0].codigoCliente=0;
+
+        strcpy(clientes[0].apellido,"souza");
+
+        strcpy(clientes[0].nombre,"ivan");
+
+        strcpy(clientes[0].domicilio,"Palacios 605");
+
+        strcpy(clientes[0].telefono, "1558267965");
+
+        clientes[0].isEmpty=0;
+
+
+        clientes[1].codigoCliente=1;
+
+        strcpy( clientes[1].apellido,"Zalazar");
+
+        strcpy( clientes[1].nombre,"Matias");
+
+        strcpy( clientes[1].domicilio,"Martin Fiero 748");
+
+        strcpy( clientes[1].telefono, "1132748401");
+
+        clientes[1].isEmpty=0;
+
+
+        //printf("el cliente es: %s      y alquilo el juego: %s       %d/%d/%d", clientes[alquileres[0].CodigoCliente].nombre ,  juegos[alquileres[0].CodigoJuego].descripcion,alquileres[0].fecha.dia,alquileres[0].fecha.mes,alquileres[0].fecha.anio);
+
+}
+
+int ImprimirMenuPrincipalYObtenerRespuesta(){
+    int respuesta;
+    int flag=1;
+
+    printf("\n1-Juegos");
+    printf("\n2-Clientes");
+    printf("\n3-Alquileres");
+    printf("\n4-Salir");
+    do{
+    if (flag){
+    printf("\nIngrese Respuesta: ");
+    flag=0;
+    }else {
+    printf("\nError Reingrese respuesta correcta: ");
+    }
+    scanf("%d",&respuesta);
+
+    }while(respuesta<=0||respuesta>4);
+return respuesta;
+}
+
+int ImprimirMenuAlquileres(){
+    int respuesta;
+    int flag=1;
+    printf("                                ALQUILERES                           ");
+    printf("\n1-Altas");
+    printf("\n2-Ir al menu principal");
+
+    do{
+    if (flag){
+    printf("\nIngrese Respuesta: ");
+    flag=0;
+    }else {
+    printf("\nError Reingrese respuesta correcta: ");
+    }
+    scanf("%d",&respuesta);
+
+    }while(respuesta<=0||respuesta>2);
+
+return respuesta;
+}
+
+
+int ImprimirMenuClientes(){
+    int respuesta;
+    int flag=1;
+    printf("                                CLIENTES                           ");
+    printf("\n1-Altas");
+    printf("\n2-Modificar");
+    printf("\n3-Baja");
+    printf("\n4-Listar");
+    printf("\n5-Ir al menu principal");
+
+    do{
+    if (flag){
+    printf("\nIngrese Respuesta: ");
+    flag=0;
+    }else {
+    printf("\nError Reingrese respuesta correcta: ");
+    }
+    scanf("%d",&respuesta);
+
+    }while(respuesta<=0||respuesta>5);
+
+return respuesta;
+}
+
+
+
+
+int ImprimirMenuJuegos(){
+    int respuesta;
+    int flag=1;
+    printf("                                JUEGOS                           ");
+    printf("\n1-Altas");
+    printf("\n2-Modificar");
+    printf("\n3-Baja");
+    printf("\n4-Listar");
+    printf("\n5-Ir al menu principal");
+
+    do{
+    if (flag){
+    printf("\nIngrese Respuesta: ");
+    flag=0;
+    }else {
+    printf("\nError Reingrese respuesta correcta: ");
+    }
+    scanf("%d",&respuesta);
+
+    }while(respuesta<=0||respuesta>5);
+
+return respuesta;
+}
+
+
+
+
+
+

@@ -47,7 +47,8 @@ int ValidarExistenciaDeCodigoDeJuego(eJuegos*juegos,int len){
     int i;
     do{
     printf("\nIngrese codigo de juego: ");
-    scanf("%d",codigoIngresado);
+    fflush(stdin);
+    scanf("%d",&codigoIngresado);
     for (i=0;i<len;i++){
         if (juegos[i].isEmpty==0 && juegos[i].codigoJuego == codigoIngresado){
             flagWhile=1;
@@ -55,6 +56,7 @@ int ValidarExistenciaDeCodigoDeJuego(eJuegos*juegos,int len){
         }
     }
         }while(flagWhile==0);
+        printf("\nel codigo de juego existe");  //<-----DEBUG
 return codigoIngresado;
 }
 /*  valida que en la planilla alquileres, haya un codigo de clientes existentes, para cargarlos en el campo codigo de cliente
@@ -68,7 +70,7 @@ int ValidarExistenciaDeCodigoDeCliente(eClientes*clientes,int len){
     int i;
     do{
     printf("\nIngrese codigo de cliente: ");
-    scanf("%d",codigoIngresado);
+    scanf("%d",&codigoIngresado);
     for (i=0;i<len;i++){
         if (clientes[i].isEmpty==0 && clientes[i].codigoCliente == codigoIngresado){
             flagWhile=1;
@@ -76,6 +78,8 @@ int ValidarExistenciaDeCodigoDeCliente(eClientes*clientes,int len){
         }
     }
         }while(flagWhile==0);
+
+        printf("\nel codigo de cliente existe");  //<-----DEBUG
 return codigoIngresado;
 }
 
