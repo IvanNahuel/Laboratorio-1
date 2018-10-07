@@ -25,8 +25,11 @@ int main()
     int respuestaJuegos;
     int respuestaAlquileres;
 
+    int IdAmodificar;
+    int idABajar;
+
     do{
-        printf("                                GESTION                           ");
+        printf("\n                                GESTION                           ");
 
         //
         //
@@ -36,21 +39,37 @@ int main()
         gestionRespuesta = ImprimirMenuPrincipalYObtenerRespuesta();
         switch(gestionRespuesta){
         case 1:
+        system("cls");
         respuestaJuegos = ImprimirMenuJuegos();
                 switch (respuestaJuegos){
-                case 1:
                 //alta
+                //alta
+                case 1:
+                    system("cls");
+                    altaJuegos(juegos,LEN);
+
                 break;
                 case 2:
                 //modificar
+                    system("cls");
+                    ModificarJuego(juegos,LEN);
+
                 break;
                 case 3:
+                    //pedir ir del juego a bajar
+                    system("cls");
+                    idABajar = pedirIdABajar();
+                    BajaJuegos(juegos,LEN,idABajar);
+
                 //baja
                 break;
                 case 4:
+                    system("cls");
+                    listarJuego(juegos,LEN);
                 //listar
                 break;
                 case 5:
+                    system("cls");
                 //ir al menu principal
                 continue;
                 break;

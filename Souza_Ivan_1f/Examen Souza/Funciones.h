@@ -39,7 +39,7 @@ int obtenerEspacioLibre(eJuegos*juegos,int len);
 
 void BajaJuegos(eJuegos*juegos,int len,int idBajar);
 
-void ModificarJuego(eJuegos*juegos,int len,int idModificar);
+void ModificarJuego(eJuegos*juegos,int len);
 
 int sortEmployees(eJuegos* list, int len);
 
@@ -51,7 +51,7 @@ void altaClientes(eClientes*clientes,int len);
 
 int obtenerEspacioLibreClientes(eClientes*clientes,int len);
 
-void ModificarCliente(eClientes*clientes,int len,int idModificar);
+void ModificarCliente(eClientes*clientes,int len);
 
 void BajaClientes(eClientes*clientes,int len,int idBajar);
 

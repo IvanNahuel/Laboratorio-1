@@ -49,31 +49,47 @@ for (i=0;i<len;i++){
         }
     }
 }
-void ModificarJuego(eJuegos*juegos,int len,int idModificar){
+void ModificarJuego(eJuegos*juegos,int len){
     int i;
     int flag=1;
+    int indice =BuscarPorId(juegos,len);
 
-    for (i=0;i<len;i++){
-        if (juegos[i].codigoJuego==idModificar && juegos[i].isEmpty==0 ){
-        printf("\nindex: %d",i);
-        validarChares(juegos[idModificar].descripcion,51,"\nIngrese descripcion: ","\nError Ingrese una descripcion mas corta: ");
+    if (indice!=-1){
 
-        juegos[idModificar].importe = ImporteValidado();      //VALIDADO
-        flag =0;
-        break;
-        }
-    }
-    if (flag){
-        printf("\nNo se ha encontrado el indice buscado, verifique que sea el correcto");
+        validarChares(juegos[indice].descripcion,51,"\nIngrese descripcion: ","\nError Ingrese una descripcion mas corta: ");
+
+        juegos[indice].importe = ImporteValidado();      //VALIDADO
+    }else {
+    printf("\nJuego no encontrado Reintente");
     }
 }
+
+int BuscarPorId(eJuegos*juegos,int len){
+int respuesta;
+int indice=-1;
+int i=0;
+respuesta = pedirIdAModificar("\nIngrese codigo de juego a modificar: ","\nError reingrese un codigo de juego valido: ");
+    for (i=0;i<len;i++){
+        if (juegos[i].codigoJuego==respuesta && juegos[i].isEmpty==0){
+            indice =i;
+            break;
+        }
+    }
+if (indice!=-1){
+printf("\nse modificara: id: %d    nombre: %s",juegos[indice].codigoJuego,juegos[indice].descripcion);
+}
+return indice;
+}
+
+
+
 void listarJuego(eJuegos* juego,int len){
     int i;
     sortEmployees(juego,len);                //ordenamelo
     for (i=0;i<len;i++){
         if (juego[i].isEmpty==0){
             //sortEmployees(juego,len);                //ordenamelo
-            printf("\n%2d     %10s      %4d",juego[i].codigoJuego,juego[i].descripcion,juego[i].importe);
+            printf("\n%2d     %18s      %4d",juego[i].codigoJuego,juego[i].descripcion,juego[i].importe);
         }
     }
 }
@@ -144,29 +160,45 @@ int obtenerEspacioLibreClientes(eClientes*clientes,int len){
     return retorno;
 }
 
-void ModificarCliente(eClientes*clientes,int len,int idModificar){
-    int flag=1;
-
+void ModificarCliente(eClientes*clientes,int len){
     int i;
-    for (i=0;i<len;i++){
-        if ( clientes[i].isEmpty==0 && clientes[i].codigoCliente==idModificar){
+    int indice=buscarClientePorID(clientes,len);
 
-        validarChares(clientes[idModificar].apellido,51,"\nIngrese apellido del cliente: ","Error Reingrese un apellido mas corto: ");
+    if (indice!=-1){
 
-        validarChares(clientes[idModificar].nombre,51,"\nIngrese nombre del cliente: ","Error Reingrese un nombre mas corto: ");
+        validarChares(clientes[indice].apellido,51,"\nIngrese apellido del cliente: ","Error Reingrese un apellido mas corto: ");
 
-        validarChares(clientes[idModificar].domicilio,51,"Ingrese domicilio del cliente: ","Error Reingrese un domicilio mas corto: ");
+        validarChares(clientes[indice].nombre,51,"\nIngrese nombre del cliente: ","Error Reingrese un nombre mas corto: ");
 
-        ValidarNumeroTelefonico(clientes[idModificar].telefono);
+        validarChares(clientes[indice].domicilio,51,"Ingrese domicilio del cliente: ","Error Reingrese un domicilio mas corto: ");
 
-        flag=0;
+        ValidarNumeroTelefonico(clientes[indice].telefono);
+    }else {
+    printf("\nCliente no encontrado reintente nuevamente");
+    }
+
+}
+
+int buscarClientePorID(eClientes*clientes,int len){
+int respuesta;
+int index=-1;
+int i;
+respuesta = pedirIdAModificar("\nIngrese el codigo de cliente: ","\nError reingrese un codigo de cliente valido: ");
+for (i=0;i<len;i++){
+    if (clientes[i].codigoCliente==respuesta && clientes[i].isEmpty==0){
+        index=i;
         break;
         }
     }
-    if (flag){
-        printf("\nError no se ha encontrado el codigo de cliente ingresado reintente ");
-    }
+if (index!=-1){
+printf("\nse modificara: id: %d    nombre: %s",clientes[indice].codigoCliente,clientes[indice].nombre);
 }
+
+return index;
+}
+
+
+
 void BajaClientes(eClientes*clientes,int len,int idBajar){
 int i;
 for (i=0;i<len;i++){
@@ -251,6 +283,7 @@ void altaAlquileres(eAlquileres*alquileres,int len,eJuegos*juegos,eClientes*clie
     }
 }
 void HarcodeoDeAlgunasFunciones(eJuegos*juegos,eClientes*clientes){
+
         juegos[0].codigoJuego=0;
 
         strcpy(juegos[0].descripcion,"Call of duty");
@@ -396,6 +429,41 @@ int ImprimirMenuJuegos(){
     }while(respuesta<=0||respuesta>5);
 
 return respuesta;
+}
+
+int pedirIdAModificar(char*mensaje,char*mensajeError){
+    int flag=1;
+    int respuesta;
+    do{
+    if (flag){
+    printf("%s",mensaje);
+    flag=0;
+    }else {
+    printf("%s",mensajeError);
+    }
+
+    scanf("%d",&respuesta);
+    }while (respuesta<0||respuesta>1000);
+
+return respuesta;
+}
+
+int pedirIdABajar(char*mensaje,char*mensajeError){
+    int flag=1;
+    int respuesta;
+    do{
+    if (flag){
+    printf("%s",mensaje);
+    flag=0;
+    }else {
+    printf("%s",mensajeError);
+    }
+
+    scanf("%d",&respuesta);
+    }while (respuesta<0||respuesta>1000);
+
+return respuesta;
+
 }
 
 
