@@ -31,7 +31,7 @@ eFecha fecha;
 }eAlquileres;
 
 //------- juegos funciones-------
- void initJuegos(eJuegos*juegos,int len);
+void initJuegos(eJuegos*juegos,int len);
 
 void altaJuegos(eJuegos*juegos,int len,int* codigoJuegoCont);
 
