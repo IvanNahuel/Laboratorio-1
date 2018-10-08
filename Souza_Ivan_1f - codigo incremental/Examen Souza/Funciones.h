@@ -162,29 +162,81 @@ void listarClientes(eClientes* clientes,int len);
  */
 int sortClientes(eClientes* list, int len);
 
-//--------funciones alquileres------
+/** \brief inicializa en el array de alquileres, en espacios vacios
+ * \param eAlquileres*alquileres
+ * \param int len
+ * \return sin retorno
+ */
  void initAlquileres(eAlquileres*alquileres,int len);
 
+  /** \brief busca en el array de alquileres un indice libre y lo retorna
+ * \param eAlquileres*alquileres
+ * \param int len
+ * \return entero que representa el indice vacio
+ */
 int obtenerEspacioLibreAlquileres(eAlquileres*alquileres,int len);
 
+/** \brief mediante un indice de espacio vacio, obtenido por otra funcion llena los campos correspondiente de la struc
+ *tura alquileres
+ * \param eAlquileres*alquileres
+ * \param int len
+ * \param eJuegos*juegos
+ * \param eClientes*clientes
+ * \return sin retorno
+ */
 void altaAlquileres(eAlquileres*alquileres,int len,eJuegos*juegos,eClientes*clientes);
 
-//----------Otras funciones-----
-
+/** \brief con la structura clientes y juegos inicializa dos campos de ejemplos
+ * \param eClientes*clientes
+ * \param int len
+ * \param eJuegos*juegos
+ * \param int* codigoClienteCont
+ * \return sin retorno
+ */
 void HarcodeoDeAlgunasFunciones(eJuegos*juegos,eClientes*clientes,int* codigoJuegoCont,int* codigoClienteCont);
 
+/** \brief despliega el menu principal y pide el ingreso de un entero que representa una respuesta a operar
+ * \param sin parametro
+ * \return int, retorna la respuesta
+ */
 int ImprimirMenuPrincipalYObtenerRespuesta();
 
+/** \brief despliega el menu sobre alquileres y pide el ingreso de un entero que representa una respuesta a operar
+ * \param sin parametro
+ * \return int, retorna la respuesta
+ */
 int ImprimirMenuAlquileres();
 
+/** \brief despliega el menu sobre clientes y pide el ingreso de un entero que representa una respuesta a operar
+ * \param sin parametro
+ * \return int, retorna la respuesta
+ */
 int ImprimirMenuClientes();
 
+/** \brief despliega el menu sobre juegos y pide el ingreso de un entero que representa una respuesta a operar
+ * \param sin parametro
+ * \return int, retorna la respuesta
+ */
 int ImprimirMenuJuegos();
 
+/** \brief pide el ingreso de un entero, verifica si es valido y retorna el entero ingresado
+ * \param char*mensaje
+ * \param char*mensajeError
+ * \return int, retorna el id
+ */
 int pedirIdAModificar(char*mensaje,char*mensajeError);
 
+/** \brief pide el ingreso de un entero, verifica si es valido y retorna el entero ingresado
+ * \param char*mensaje
+ * \param char*mensajeError
+ * \return int, retorna el id
+ */
 int pedirIdABajar(char*mensaje,char*mensajeError);
 
+/** \brief imprime un cartel pasado por parametro
+ * \param sin parametro
+ * \return sin retorno
+ */
 void ImprimirCartelDeFlags(char*pCadena);
 
 
