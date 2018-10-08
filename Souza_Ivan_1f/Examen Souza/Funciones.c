@@ -191,7 +191,8 @@ for (i=0;i<len;i++){
         }
     }
 if (index!=-1){
-printf("\nse modificara: id: %d    nombre: %s",clientes[indice].codigoCliente,clientes[indice].nombre);
+//
+printf("\nse modificara: id: %d    nombre: %s",clientes[index].codigoCliente,clientes[index].nombre);
 }
 
 return index;
