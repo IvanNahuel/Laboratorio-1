@@ -46,7 +46,7 @@
 	"Funciones.h"
 	"InputsValidaciones.h"
 
-1538963678 source:c:\users\home\desktop\souza_ivan_1f\examen souza\funciones.c
+1538964165 source:c:\users\home\desktop\souza_ivan_1f\examen souza\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -57,7 +57,7 @@
 
 1538514026 c:\users\home\desktop\souza_ivan_1f\examen souza\inputsvalidaciones.h
 
-1538872750 source:c:\users\home\desktop\souza_ivan_1f\examen souza\inputsvalidaciones.c
+1538964379 source:c:\users\home\desktop\souza_ivan_1f\examen souza\inputsvalidaciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -65,7 +65,7 @@
 	"Funciones.h"
 	"InputsValidaciones.h"
 
-1538963386 source:c:\users\home\desktop\souza_ivan_1f\examen souza\main.c
+1538964109 source:c:\users\home\desktop\souza_ivan_1f\examen souza\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

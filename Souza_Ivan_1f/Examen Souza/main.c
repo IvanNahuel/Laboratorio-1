@@ -111,16 +111,20 @@ int main()
             }while(respuestaClientes!=5);
             break;
         case 3:
+            system("cls");
+            do{
             respuestaAlquileres = ImprimirMenuAlquileres();
             switch(respuestaAlquileres){
                 case 1:
-                    //da de alta a los nuevos alquileres
+                    system("cls");
+                    altaAlquileres(alquileres,LEN,juegos,clientes);
                 break;
-
                 case 2:
+                    system("cls");
                 continue;           //cortar el switch y que imprima el menu
                 break;
-        }
+                }
+        }while(respuestaAlquileres!=2);
             break;
         case 4:
             //salir

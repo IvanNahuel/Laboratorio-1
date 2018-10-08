@@ -307,7 +307,7 @@ void altaAlquileres(eAlquileres*alquileres,int len,eJuegos*juegos,eClientes*clie
     int index;
     index = obtenerEspacioLibreAlquileres(alquileres,len);
     if (index!=-1){
-        printf("\n%d",i);
+        printf("\n%d",index);
 
         alquileres[index].CodigoAlquiler = index;          //autoIncrimental, el primero libre
 
