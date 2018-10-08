@@ -96,7 +96,7 @@ int sortEmployees(eJuegos* list, int len){
     int j;
     int auxCodigoDeJuego;
 
-    int retorno=-1;
+    int retorno=0;
     if (list!=NULL && len>0){
         for ( i=0;i<len-1;i++){
             for ( j=i+1;j<len;j++){
