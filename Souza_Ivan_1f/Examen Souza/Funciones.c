@@ -18,7 +18,7 @@ void altaJuegos(eJuegos*juegos,int len){
     int index;
     index = obtenerEspacioLibre(juegos,len);
     if (index!=-1){
-
+        printf("\nindice encontrado: %d",index);
         juegos[index].codigoJuego=index;            //Descripcion validada
 
         validarChares(juegos[index].descripcion,51,"\nIngrese descripcion: ","\nError Ingrese una descripcion mas corta: ");
@@ -88,29 +88,53 @@ void listarJuego(eJuegos* juego,int len){
     sortEmployees(juego,len);                //ordenamelo
     for (i=0;i<len;i++){
         if (juego[i].isEmpty==0){
-            //sortEmployees(juego,len);                //ordenamelo
+            if (juego[i].codigoJuego!=i){       //si el codigo de juego es distinto al indice, ordenamelo
+                juego[i].codigoJuego =i;
+            }
             printf("\n%2d     %18s      %4d",juego[i].codigoJuego,juego[i].descripcion,juego[i].importe);
         }
     }
+    printf("\n");
 }
 int sortEmployees(eJuegos* list, int len){
     eJuegos aux;
     int i;
     int j;
+    int auxCodigoDeJuego;
+
     int retorno=-1;
     if (list!=NULL && len>0){
         for ( i=0;i<len-1;i++){
             for ( j=i+1;j<len;j++){
+
+                if (list[i].isEmpty ==1 && list[j].isEmpty==0){            //si la memoria anterior esta vacia hacemela llena y swapeala
+                    //printf("\nHa swapeado un campo que anterior mente estaba vacio, ahora esta lleno\n");
+                    list[i]=list[j];
+                    list[i].codigoJuego=i;
+                    list[j].isEmpty=1;
+                }
                 if (list[i].importe < list[j].importe && list[i].isEmpty==0 && list[j].isEmpty==0){           //si i es menor a j
                     aux = list[i];
+                    auxCodigoDeJuego = list[i].codigoJuego;
                     list[i]=list[j];
+                    list[i].codigoJuego = list[j].codigoJuego;
                     list[j]=aux;
+                    list[j].codigoJuego = auxCodigoDeJuego;
+                    //entonces tambien podriamos decirle, que swapee el codigo de juego
+
 
                 } else if ( list[i].importe==list[j].importe && strcmp(list[i].descripcion,list[j].descripcion)>0 && list[i].isEmpty==0 && list[j].isEmpty==0 ){
                     printf("\nOdeno por nombre\n");
-                    aux = list[i];
+                    /*aux = list[i];
                     list[i]=list[j];
+                    list[j]=aux;*/
+
+                    aux = list[i];
+                    auxCodigoDeJuego = list[i].codigoJuego;
+                    list[i]=list[j];
+                    list[i].codigoJuego = list[j].codigoJuego;
                     list[j]=aux;
+                    list[j].codigoJuego = auxCodigoDeJuego;
                 }
             }
         }
@@ -198,8 +222,6 @@ printf("\nse modificara: id: %d    nombre: %s",clientes[index].codigoCliente,cli
 return index;
 }
 
-
-
 void BajaClientes(eClientes*clientes,int len,int idBajar){
 int i;
 for (i=0;i<len;i++){
@@ -215,11 +237,16 @@ void listarClientes(eClientes* clientes,int len){
     sortClientes(clientes,len);                //ordenamelo
     for (i=0;i<len;i++){
         if (clientes[i].isEmpty==0){
+            if (clientes[i].codigoCliente!=i){       //si el codigo de juego es distinto al indice, ordenamelo
+                clientes[i].codigoCliente =i;
+            }
             printf("\n%3d        %15s        %15s        %20s         %20s",clientes[i].codigoCliente,clientes[i].apellido,clientes[i].nombre,clientes[i].domicilio,clientes[i].telefono);
+
         }
     }
 }
 int sortClientes(eClientes* list, int len){
+    int auxCodigoDeCliente;
     eClientes aux;
     int i;
     int j;
@@ -227,16 +254,28 @@ int sortClientes(eClientes* list, int len){
     if (list!=NULL && len>0){
         for ( i=0;i<len-1;i++){
             for ( j=i+1;j<len;j++){
+                if (list[i].isEmpty ==1 && list[j].isEmpty==0){            //si la memoria anterior esta vacia hacemela llena y swapeala
+                    //printf("\nHa swapeado un campo que anterior mente estaba vacio, ahora esta lleno\n");
+                    list[i]=list[j];
+                    list[i].codigoCliente=i;
+                    list[j].isEmpty=1;
+                }
                 if ( list[i].isEmpty==0 && list[j].isEmpty==0 && strcmp(list[i].apellido,list[j].apellido)>0){           //si i es menor a j
                     aux = list[i];
+                    auxCodigoDeCliente = list[i].codigoCliente;
                     list[i]=list[j];
+                    list[i].codigoCliente = list[j].codigoCliente;
                     list[j]=aux;
+                    list[j].codigoCliente = auxCodigoDeCliente;
                 }
                 else if (list[i].isEmpty==0 && list[j].isEmpty==0 && strcmp(list[i].apellido,list[j].apellido)==0){
                     if (strcmp(list[i].nombre,list[j].nombre)>0){
-                        aux = list[i];
-                        list[i]=list[j];
-                        list[j]=aux;
+                    aux = list[i];
+                    auxCodigoDeCliente = list[i].codigoCliente;
+                    list[i]=list[j];
+                    list[i].codigoCliente = list[j].codigoCliente;
+                    list[j]=aux;
+                    list[j].codigoCliente = auxCodigoDeCliente;
                     }
                 }
             }
@@ -307,12 +346,11 @@ void HarcodeoDeAlgunasFunciones(eJuegos*juegos,eClientes*clientes){
 
         //harcodeo cliente
 
-
         clientes[0].codigoCliente=0;
 
-        strcpy(clientes[0].apellido,"souza");
+        strcpy(clientes[0].apellido,"Souza");
 
-        strcpy(clientes[0].nombre,"ivan");
+        strcpy(clientes[0].nombre,"Ivan");
 
         strcpy(clientes[0].domicilio,"Palacios 605");
 
@@ -411,7 +449,7 @@ return respuesta;
 int ImprimirMenuJuegos(){
     int respuesta;
     int flag=1;
-    printf("                                JUEGOS                           ");
+    printf("\n                                JUEGOS                           ");
     printf("\n1-Altas");
     printf("\n2-Modificar");
     printf("\n3-Baja");

@@ -25,8 +25,8 @@ int main()
     int respuestaJuegos;
     int respuestaAlquileres;
 
-    int IdAmodificar;
     int idABajar;
+    int idABajarCliente;
 
     do{
         printf("\n                                GESTION                           ");
@@ -39,15 +39,15 @@ int main()
         gestionRespuesta = ImprimirMenuPrincipalYObtenerRespuesta();
         switch(gestionRespuesta){
         case 1:
-        system("cls");
-        respuestaJuegos = ImprimirMenuJuegos();
+            system("cls");
+                do{
+            respuestaJuegos = ImprimirMenuJuegos();
                 switch (respuestaJuegos){
                 //alta
                 //alta
                 case 1:
                     system("cls");
                     altaJuegos(juegos,LEN);
-
                 break;
                 case 2:
                 //modificar
@@ -57,8 +57,8 @@ int main()
                 break;
                 case 3:
                     //pedir ir del juego a bajar
-                    system("cls");
-                    idABajar = pedirIdABajar();
+                    //system("cls");
+                    idABajar = pedirIdABajar("\nIngrese codigo de juego a bajar: ","\nError reingrese un codigo de juego valido: ");
                     BajaJuegos(juegos,LEN,idABajar);
 
                 //baja
@@ -74,27 +74,41 @@ int main()
                 continue;
                 break;
                 }
+                }while(respuestaJuegos!=5);
             break;
         case 2:
+            system("cls");
+            do{
             respuestaClientes = ImprimirMenuClientes();
                 switch (respuestaClientes){
                 case 1:
+                system("cls");
+                altaClientes(clientes,LEN);
                 //alta
                 break;
                 case 2:
+                system("cls");
+                ModificarCliente(clientes,LEN);
                 //modificar
                 break;
                 case 3:
+                system("cls");
+                idABajarCliente = pedirIdABajar("\nIngrese el id del cliente a bajar: ","\nError reingrese un id valido de cliente");
+                BajaClientes(clientes,LEN,idABajarCliente);
                 //baja
                 break;
                 case 4:
+                system("cls");
+                listarClientes(clientes,LEN);
                 //listar
                 break;
                 case 5:
+                system("cls");
                 //ir al menu principal
                 continue;
                 break;
-            }
+                }
+            }while(respuestaClientes!=5);
             break;
         case 3:
             respuestaAlquileres = ImprimirMenuAlquileres();
