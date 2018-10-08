@@ -5,25 +5,47 @@
 #include "Funciones.h"
 #include "InputsValidaciones.h"
 int DiaValidar(){
+
+    int flag=1;
     int dia;
     do{
+        if (flag){
         printf("\nIngrese Dia del alquiler: ");
+        flag=0;
+        }else {
+        printf("\nReingrese un dia valido: ");
+        }
+
         scanf("%d",&dia);
     }while (dia<0||dia>31);
     return dia;
 }
 int MesValidar(){
+    int flag=1;
     int mes;
     do{
+        if (flag){
         printf("\nIngrese mes del alquiler: ");
+        flag=0;
+        }else {
+        printf("\nReingrese un mes valido: ");
+        }
+
         scanf("%d",&mes);
     }while (mes<0||mes>12);
     return mes;
 }
 int AnioValidar(){
+    int flag=1;
     int anio;
     do{
+        if (flag){
         printf("\nIngrese anio del alquiler: ");
+        flag =0;
+        }else {
+        printf("\nReingrese un anio valido: ");
+        }
+
         scanf("%d",&anio);
     }while (anio<0||anio>2019);
     return anio;
