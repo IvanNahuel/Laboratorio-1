@@ -137,12 +137,11 @@ void validarChares(char*retornoParam,int caracterMaximo,char* cadenaMensaje,char
    strcpy(retornoParam,retorno);
 }
 void ValidarNumeroTelefonico(char* pCadena){
-
     char retorno[50];
     int cantidad;
     int i;
     int flag=0;
-
+    do{
     do{
         printf("\nIngrese un numero telefonico: ");
         fgets(retorno,sizeof(retorno)-2,stdin);
@@ -160,6 +159,9 @@ void ValidarNumeroTelefonico(char* pCadena){
             }
         }
     }while(flag==0);
+    }while(cantidad>21);
+
+
     strcpy(pCadena,retorno);
     //printf("finalizo funcion validad numero");
 }

@@ -4,22 +4,19 @@
 #include "Funciones.h"
 #include "InputsValidaciones.h"
 
-void test(){
-printf("hola");
-}
-
  void initJuegos(eJuegos*juegos,int len){
     int i;
     for (i=0;i<len;i++){
         juegos[i].isEmpty=1;
     }
 }
-void altaJuegos(eJuegos*juegos,int len){
+void altaJuegos(eJuegos*juegos,int len,int* codigoJuegoCont){
     int index;
     index = obtenerEspacioLibre(juegos,len);
     if (index!=-1){
-        printf("\nindice encontrado: %d",index);
-        juegos[index].codigoJuego=index;            //Descripcion validada
+
+        juegos[index].codigoJuego=*codigoJuegoCont;            //Descripcion validada
+        *codigoJuegoCont=*codigoJuegoCont+1;
 
         validarChares(juegos[index].descripcion,51,"\nIngrese descripcion: ","\nError Ingrese una descripcion mas corta: ");
 
@@ -88,9 +85,6 @@ void listarJuego(eJuegos* juego,int len){
     sortEmployees(juego,len);                //ordenamelo
     for (i=0;i<len;i++){
         if (juego[i].isEmpty==0){
-            if (juego[i].codigoJuego!=i){       //si el codigo de juego es distinto al indice, ordenamelo
-                juego[i].codigoJuego =i;
-            }
             printf("\n%2d     %18s      %4d",juego[i].codigoJuego,juego[i].descripcion,juego[i].importe);
         }
     }
@@ -102,39 +96,20 @@ int sortEmployees(eJuegos* list, int len){
     int j;
     int auxCodigoDeJuego;
 
-    int retorno=-1;
+    int retorno=0;
     if (list!=NULL && len>0){
         for ( i=0;i<len-1;i++){
             for ( j=i+1;j<len;j++){
-
-                if (list[i].isEmpty ==1 && list[j].isEmpty==0){            //si la memoria anterior esta vacia hacemela llena y swapeala
-                    //printf("\nHa swapeado un campo que anterior mente estaba vacio, ahora esta lleno\n");
-                    list[i]=list[j];
-                    list[i].codigoJuego=i;
-                    list[j].isEmpty=1;
-                }
                 if (list[i].importe < list[j].importe && list[i].isEmpty==0 && list[j].isEmpty==0){           //si i es menor a j
                     aux = list[i];
-                    auxCodigoDeJuego = list[i].codigoJuego;
                     list[i]=list[j];
-                    list[i].codigoJuego = list[j].codigoJuego;
                     list[j]=aux;
-                    list[j].codigoJuego = auxCodigoDeJuego;
-                    //entonces tambien podriamos decirle, que swapee el codigo de juego
-
 
                 } else if ( list[i].importe==list[j].importe && strcmp(list[i].descripcion,list[j].descripcion)>0 && list[i].isEmpty==0 && list[j].isEmpty==0 ){
                     printf("\nOdeno por nombre\n");
-                    /*aux = list[i];
-                    list[i]=list[j];
-                    list[j]=aux;*/
-
                     aux = list[i];
-                    auxCodigoDeJuego = list[i].codigoJuego;
                     list[i]=list[j];
-                    list[i].codigoJuego = list[j].codigoJuego;
                     list[j]=aux;
-                    list[j].codigoJuego = auxCodigoDeJuego;
                 }
             }
         }
@@ -152,13 +127,13 @@ int sortEmployees(eJuegos* list, int len){
 }
 
 
-void altaClientes(eClientes*clientes,int len){
+void altaClientes(eClientes*clientes,int len,int *PCodigoCliente){
     int i;
     int index;
     index = obtenerEspacioLibreClientes(clientes,len);
     if (index!=-1){
         //printf("%d",index);
-        clientes[index].codigoCliente=index;
+        clientes[index].codigoCliente=*PCodigoCliente;
 
         validarChares(clientes[index].apellido,51,"\nIngrese apellido del cliente: ","Error Reingrese un apellido mas corto: ");
 
@@ -168,8 +143,9 @@ void altaClientes(eClientes*clientes,int len){
 
         ValidarNumeroTelefonico(clientes[index].telefono);
 
-        clientes[index].isEmpty=0;
+        *PCodigoCliente=*PCodigoCliente+1;
 
+        clientes[index].isEmpty=0;
     }
 }
 int obtenerEspacioLibreClientes(eClientes*clientes,int len){
@@ -237,11 +213,7 @@ void listarClientes(eClientes* clientes,int len){
     sortClientes(clientes,len);                //ordenamelo
     for (i=0;i<len;i++){
         if (clientes[i].isEmpty==0){
-            if (clientes[i].codigoCliente!=i){       //si el codigo de juego es distinto al indice, ordenamelo
-                clientes[i].codigoCliente =i;
-            }
             printf("\n%3d        %15s        %15s        %20s         %20s",clientes[i].codigoCliente,clientes[i].apellido,clientes[i].nombre,clientes[i].domicilio,clientes[i].telefono);
-
         }
     }
 }
@@ -254,28 +226,16 @@ int sortClientes(eClientes* list, int len){
     if (list!=NULL && len>0){
         for ( i=0;i<len-1;i++){
             for ( j=i+1;j<len;j++){
-                if (list[i].isEmpty ==1 && list[j].isEmpty==0){            //si la memoria anterior esta vacia hacemela llena y swapeala
-                    //printf("\nHa swapeado un campo que anterior mente estaba vacio, ahora esta lleno\n");
-                    list[i]=list[j];
-                    list[i].codigoCliente=i;
-                    list[j].isEmpty=1;
-                }
                 if ( list[i].isEmpty==0 && list[j].isEmpty==0 && strcmp(list[i].apellido,list[j].apellido)>0){           //si i es menor a j
                     aux = list[i];
-                    auxCodigoDeCliente = list[i].codigoCliente;
                     list[i]=list[j];
-                    list[i].codigoCliente = list[j].codigoCliente;
                     list[j]=aux;
-                    list[j].codigoCliente = auxCodigoDeCliente;
                 }
                 else if (list[i].isEmpty==0 && list[j].isEmpty==0 && strcmp(list[i].apellido,list[j].apellido)==0){
                     if (strcmp(list[i].nombre,list[j].nombre)>0){
                     aux = list[i];
-                    auxCodigoDeCliente = list[i].codigoCliente;
                     list[i]=list[j];
-                    list[i].codigoCliente = list[j].codigoCliente;
                     list[j]=aux;
-                    list[j].codigoCliente = auxCodigoDeCliente;
                     }
                 }
             }
@@ -307,7 +267,6 @@ void altaAlquileres(eAlquileres*alquileres,int len,eJuegos*juegos,eClientes*clie
     int index;
     index = obtenerEspacioLibreAlquileres(alquileres,len);
     if (index!=-1){
-        printf("\n%d",index);
 
         alquileres[index].CodigoAlquiler = index;          //autoIncrimental, el primero libre
 
@@ -320,9 +279,13 @@ void altaAlquileres(eAlquileres*alquileres,int len,eJuegos*juegos,eClientes*clie
         alquileres[index].fecha.mes = MesValidar();     //----VALIDADO
 
         alquileres[index].fecha.anio = AnioValidar();   //----VALIDADO
+
+        alquileres[index].isEmpty=0;
     }
 }
-void HarcodeoDeAlgunasFunciones(eJuegos*juegos,eClientes*clientes){
+
+//----------Otras funciones
+void HarcodeoDeAlgunasFunciones(eJuegos*juegos,eClientes*clientes,int* codigoJuegoCont,int* codigoClienteCont){
 
         juegos[0].codigoJuego=0;
 
@@ -340,6 +303,8 @@ void HarcodeoDeAlgunasFunciones(eJuegos*juegos,eClientes*clientes){
         juegos[1].importe = 150;
 
         juegos[1].isEmpty=0;
+
+        *codigoJuegoCont=2;
 
         //listarJuego(juegos,LEN);
 
@@ -371,8 +336,7 @@ void HarcodeoDeAlgunasFunciones(eJuegos*juegos,eClientes*clientes){
 
         clientes[1].isEmpty=0;
 
-
-        //printf("el cliente es: %s      y alquilo el juego: %s       %d/%d/%d", clientes[alquileres[0].CodigoCliente].nombre ,  juegos[alquileres[0].CodigoJuego].descripcion,alquileres[0].fecha.dia,alquileres[0].fecha.mes,alquileres[0].fecha.anio);
+        *codigoClienteCont=2;
 
 }
 
@@ -383,7 +347,8 @@ int ImprimirMenuPrincipalYObtenerRespuesta(){
     printf("\n1-Juegos");
     printf("\n2-Clientes");
     printf("\n3-Alquileres");
-    printf("\n4-Salir");
+    printf("\n4-informes");
+    printf("\n5-Salir");
     do{
     if (flag){
     printf("\nIngrese Respuesta: ");
@@ -393,14 +358,14 @@ int ImprimirMenuPrincipalYObtenerRespuesta(){
     }
     scanf("%d",&respuesta);
 
-    }while(respuesta<=0||respuesta>4);
+    }while(respuesta<=0||respuesta>5);
 return respuesta;
 }
 
 int ImprimirMenuAlquileres(){
     int respuesta;
     int flag=1;
-    printf("                                ALQUILERES                           ");
+    printf("\n                                ALQUILERES                           ");
     printf("\n1-Altas");
     printf("\n2-Ir al menu principal");
 
@@ -422,7 +387,7 @@ return respuesta;
 int ImprimirMenuClientes(){
     int respuesta;
     int flag=1;
-    printf("                                CLIENTES                           ");
+    printf("\n                                CLIENTES                           ");
     printf("\n1-Altas");
     printf("\n2-Modificar");
     printf("\n3-Baja");
@@ -504,6 +469,192 @@ int pedirIdABajar(char*mensaje,char*mensajeError){
 return respuesta;
 
 }
+void ImprimirCartelDeFlags(char*pCadena){
+system("cls");
+printf("%s",pCadena);
+}
+//informes
+
+//promedio total de los importes de los juegos alguilados
+//vamos a acceder a alquileres y sumar todos los juegos alquilados,sumarlos y dividirlos por la cant de juegos alquilados
+void PromedioYTotalJuegos(eAlquileres*alquileres,eJuegos*juegos,int len){
+    int i;
+    int cont=0;
+    int acumProm=0;
+    float promedio=0;
+
+
+    for (i=0;i<len;i++){
+        if (alquileres[i].isEmpty==0){
+            //tengo que buscar el codigo de juego y sumar su importe
+            printf("\nEntro al for");
+            cont++;
+            acumProm = (float)juegos[alquileres[i].CodigoJuego].importe+acumProm;
+        }
+    }
+    promedio=acumProm/cont;
+    printf("\nA)-la suma total de alquileres es: %d y el promedio es %.2f",acumProm,promedio);
+
+    //CantidadJuegosMenorImporte(promedio,juegos,len);
+}
+void CantidadJuegosMenorImporte(float promedio,eJuegos*juegos,int len){
+    printf("\n\n%f",promedio);
+    int j;
+    printf("\nB)-La cantidad de juegos cuyo importe no superan el promedio son: \n");
+    for (j=0;j<len;j++){
+        if (juegos[j].isEmpty==0 && juegos[j].importe < promedio ){
+             printf("\n%2d     %18s      %4d",juegos[j].codigoJuego,juegos[j].descripcion,juegos[j].importe);
+        }
+    }
+}
+void ClientesJuegoDeterminado(eJuegos*juegos,int len,eClientes*clientes,eAlquileres*alquileres){
+    int i;
+    printf("\n\nC)-------Clientes que alquilaron un juego determinado--------");
+    //lista de todos los clientes que alquilaron un juego determinado
+    //ingresar un codigo de juego determinado, y listar todos sus clientes
+    //debo ver en el campo alquiler quien alquilo ese juego y listar su codigo de cliente
+
+    int codigoDeJuego;
+    codigoDeJuego = ValidarExistenciaDeCodigoDeJuego(juegos,len);
+
+    for (i=0;i<len;i++){
+        if (alquileres[i].isEmpty==0 && alquileres[i].CodigoJuego==codigoDeJuego ){
+            printf("\n%15s   %15s  ",  clientes[alquileres[i].CodigoCliente].nombre,  clientes[alquileres[i].CodigoCliente].apellido);
+        }
+    }
+}
+void JuegosClientesDeterminado(eJuegos*juegos,int len,eClientes*clientes,eAlquileres*alquileres){
+        int i;
+    printf("\n\nD)-------alquileres de Juegos de clientes determinados--------");
+    //lista de todos los juegos que fueron alguilador por un deterinado cliente
+
+
+    int codigoDeCliente;
+    codigoDeCliente = ValidarExistenciaDeCodigoDeCliente(clientes,len);
+
+    for (i=0;i<len;i++){
+        if ( alquileres[i].isEmpty==0 && alquileres[i].CodigoCliente == codigoDeCliente ){
+            printf("\n%15s ",  juegos[alquileres[i].CodigoJuego].descripcion);
+        }
+    }
+}
+void JuegosMenosAlquilados(eJuegos*juegos,eAlquileres*alquileres,int len){
+    printf("\n---------Juegos menos alquilados----------- ");
+    //tengo que recorrer el array de alquileres y contar los juegos menos alquilados
+    //acceder a alquileres y contar los codigos de juegos alquilados almacenarlos en un array de 1000 y fijarse cual es el menor
+    //dependiendo del index guardarlo en el array
+    //y despues ir depurando el menor
+    int auxCodigosJuegos[len];  //guarda los codigos de juegos
+    int auxContParalelo[len];
+
+    int indiceCodigoDeJuegoMenor;
+    int minimo;
+
+    int i;
+    int j;
+    int k;
+
+    for (j=0;j<len;j++){
+        auxContParalelo[j]=0;
+    }
+    for (i=0;i<len;i++){
+        if (alquileres[i].isEmpty==0){
+                auxCodigosJuegos[i] ==alquileres[i].CodigoJuego;
+                auxContParalelo[alquileres[i].CodigoJuego]++;
+        }
+    }
+    for (k=0;k<len;k++){
+        if (k==0){
+            minimo=auxContParalelo[i];
+            indiceCodigoDeJuegoMenor=auxCodigosJuegos[i];
+        }
+        if (auxContParalelo[i]<minimo){
+            minimo=auxContParalelo[i];
+            indiceCodigoDeJuegoMenor=auxCodigosJuegos[i];
+        }
+    }
+    int z;
+    for(z=0;z<10;z++){
+        printf("\n%d",auxContParalelo[z]);
+    }
+    int x;
+
+    for(x=0;x<10;x++){
+        printf("\n%d",auxCodigosJuegos[x]);
+    }
+
+printf("\nEl juego menos alquilado es");
+printf("\n%2d     %18s      %4d",juegos[indiceCodigoDeJuegoMenor].codigoJuego,juegos[indiceCodigoDeJuegoMenor].descripcion,juegos[indiceCodigoDeJuegoMenor].importe);
+}
+void JuegosEnFechaDeterminada(eJuegos*juegos,eAlquileres*alquileres,int len){
+//ingresamos una fecha y que imprima todos los juegos alquilados en esa fecha
+printf("\n\nG)---------juegos en una fecha determinada----------");
+    eFecha fecha;
+    fecha.dia = DiaValidar();
+    fecha.mes = MesValidar();
+    fecha.anio = AnioValidar();
+    int i;
+
+    for (i=0;i<len;i++){
+        if (juegos[i].isEmpty==0 && fecha.dia == alquileres[i].fecha.dia && fecha.mes == alquileres[i].fecha.mes && fecha.anio == alquileres[i].fecha.anio){
+        printf("\n%2d     %18s      %4d",juegos[i].codigoJuego,juegos[i].descripcion,juegos[i].importe);
+        }
+    }
+}
+void ClientesEnFechaDeterminada(eClientes*clientes,eAlquileres*alquileres,int len){
+    printf("\n\nH)clientes en fecha determinada");
+    eFecha fecha;
+    fecha.dia = DiaValidar();
+    fecha.mes = MesValidar();
+    fecha.anio = AnioValidar();
+    int i;
+
+    for (i=0;i<len;i++){
+        if (clientes[i].isEmpty==0 && fecha.dia == alquileres[i].fecha.dia && fecha.mes == alquileres[i].fecha.mes && fecha.anio == alquileres[i].fecha.anio){
+        printf("\n%3d        %15s        %15s        %20s         %20s",clientes[i].codigoCliente,clientes[i].apellido,clientes[i].nombre,clientes[i].domicilio,clientes[i].telefono);
+        }
+    }
+}
+
+void SortMoreEficient(eJuegos*juegos,int len){
+//listar todos los juegos de manera descendente con el metodo mas eficiente
+printf("\n\nI)-Burbujeo mas eficiente");
+    int j;
+    eJuegos auxJuegos;
+    int flag=1;
+    while (flag==1){
+        flag=0;
+        for (j=1;j<len;j++){
+            if ( juegos[j].importe>juegos[j].importe ){
+                auxJuegos= juegos[j];
+                juegos[j]=juegos[j-1];
+                juegos[j-1]=auxJuegos;
+                flag=1;
+            }
+        }
+    }
+    listarJuego(juegos,len);
+}
+void SortInsertion(eClientes*clientes,int len){
+    printf("\n\nJ)-Metodo insercion");
+int i;
+int j;
+eClientes auxClientes;
+
+for (i=1;i<len;i++){
+    auxClientes = clientes[i];
+    j=i-1;
+    while ( j>=0 && strcmp(clientes[i].apellido,clientes[j].apellido)>0){
+        clientes[j+1]=clientes[j];
+        j--;
+        }
+        clientes[j+1]=auxClientes;
+    }
+    listarClientes(clientes,len);
+}
+
+
+
 
 
 
