@@ -1,0 +1,30 @@
+
+					punteros a cadenas
+	
+	* void miFunc(char cadena[ ]);
+	*void miFunc(char*cadena);
+
+	
+	char *letra, a;
+	char *cadena, b[10]="hola";
+
+	letra=&a;
+	cadena=b;       //cadena apunta al primer elemento del array de b
+
+	memoria ESTATICA: memoria asignada y nunca sera modificada en tiempo real
+-----------------------------------------------------------------------------------------------------------------------------------
+					punteros a structuras
+	typedef struct{
+	int edad;
+	char nombre[31];
+
+	}ePersona;
+
+
+	ePersona *p;			//puntero a structura
+
+	p->edad				//accedo a la structura mediante el operador flecha
+	(*p).edad				//accedo con notacion de puntero
+	
+
+                                                                                                  
