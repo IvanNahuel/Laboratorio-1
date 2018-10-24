@@ -1,0 +1,22 @@
+					archivos
+    existen dos tipos de archivos
+	#archivos de texto: archivos de texto como por ejemplo, todo archivo que se puede leer, solo 
+	se puede trabajar con archivos de textos, (se interpreta con texto)
+	#archivos binarios: aquellos archivos que se guardan en binario (interpreta archivos binarios)
+
+BUFFER: COLA DE ESPERA
+
+	fopen();		fopen( path ,modo );
+	#funcion para abrir un archivo, lleva dos parametros,un string que es el path del archivo a abrir,
+	y el modo de apertura, binario o texto (escritura/lectura)
+	retorna, una direccion de memoria
+	si se pudo abrir el archivo, devuelve una direccion de memoria (que representa el vinculo
+	entre el disco y la ram) si no puede abrir el archivo, retorna NULL.
+
+	fclose = cierra el archivo, tiene como argumento el puntero a FILE, y no retorna nada
+
+	REWIND = rebobinar el señalador de archivos al comienzo
+
+	fseek = funcion que permite desplazar el apuntador de archivos
+
+	ftell = posicion actual del señalador ( cuantos bytes estoy parado con el señalador de archvos)
