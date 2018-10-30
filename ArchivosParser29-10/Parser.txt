@@ -1,0 +1,24 @@
+			archivos (parser)
+
+ejemplo: codigo,descripcion,precio
+	1;	algo;	1234\n
+	2;	algomas	157\n
+
+archivos de textos ejemplos
+
+(atoi)=funcion que pasa de string a entero
+
+fscanf=lee nuestro archivo, la linea completa del archivo y sera
+guardada en una variable de tipo cadena, retorna, la cantidad
+de lecturas que realizo
+
+isdigit()=funcion que verifica si en la cadena hay un numero
+
+
+			expresiones regulares
+“%[a-z]” o “%[A-Z]”.
+acepta todo lo que tenga que ver con el rango de la A hasta la Z
+
+ “%[^,]”	
+toma todo menos la , (coma)
+
