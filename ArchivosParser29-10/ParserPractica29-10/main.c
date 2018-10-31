@@ -21,12 +21,15 @@ int main(void){
     r = parseData("datos.csv",personas,8);
 
     for(i=0; i<r; i++){
-        printf("id:%d nombre:%s apellido:%s edad:%d\n", personas[i].id,
-        //GetName(personas[i].nombre),
-        personas[i].nombre,
-        personas[i].apellido,
-        personas[i].edad);
-        //exit(EXIT_SUCCESS);
+        printf("id:%d nombre:%s apellido:%s edad:%d\n",GetId(&personas[i]),
+        //personas[i].nombre,
+        GetNombre(&personas[i]),
+
+        //personas[i].apellido,
+        GetNombre(&personas[i]),
+
+        GetAge(&personas[i]));
+        //exit(EXIT_SUCCESS);*/
     }
 }
 int parseData(char* fileName,Persona* arrayPersonas, int len){
@@ -46,13 +49,12 @@ int parseData(char* fileName,Persona* arrayPersonas, int len){
     r = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",var1,var2,var3,var4);
 
     if(r==4 && flag==1){
-    Initialize(&arrayPersonas[i],atoi(var4), strcpy(arrayPersonas[i].apellido,var3), strcpy(arrayPersonas[i].nombre,var2),atoi(var1));
+    Initialize(&arrayPersonas[i],atoi(var4),var3,var2 ,atoi(var1));
     i++;
     }
     else if (r!=4&&flag==1){   //si la lectura en R es distinto de 4, y flag es 1, o flag es 0
         break;
     }
-
     flag=1;
 
     }while(!feof(pFile) && i<len);
@@ -64,12 +66,11 @@ Persona*NewPersona(int id,char*nombre,char*apellido,int edad){
     Persona*this = malloc(sizeof(Persona));
     if (this!=NULL){
     //set de los 4 datos
-    /*
     person_setAge(this,edad);   //los datos de edad ya estan pasados por parametro
     SetName(this,nombre);       //los datos nombre los seteo
     SetSurname(this,apellido);  //seteo los datos de apellido
     SetId(this,id);             //seteo los id
-    */
+
     return this;
     }
 }
@@ -80,14 +81,6 @@ void Initialize(Persona*this,int edad,char*apellido,char*nombre,int id){
     SetSurname(this,apellido);  //seteo los datos de apellido
     SetId(this,id);
 }
-
-/*
-static void initialize(Person* this, int age, int something)
-{
-    this->age = age;       //inicializa con numeros
-    this->something = something;    //inicializa con numeros
-}
-*/
 
 void person_setAge(Persona* this, int age){
     if(age > 0){
@@ -109,12 +102,20 @@ void SetId(Persona* this, int id){
         this->id = id;        //coloca la edad valida
     }
 }
-/*
-char*GetName(Persona*this){
-    if (this!=NULL){
-        return this->nombre;
-    }
-}*/
+
+char*GetNombre(Persona*this){
+    return this->nombre;
+}
+char*GetApellido(Persona*this){
+    return this->apellido;
+}
+
+int GetId(Persona*this){
+    return this->id;
+}
+int GetAge(Persona*this){
+    return this->edad;
+}
 
 
 
