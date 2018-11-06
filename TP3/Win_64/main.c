@@ -29,7 +29,7 @@ int main()
     en memporia (PARSER)
     #leo un archivo->lo lleno a la estructura (resimido)
 
-    punto 2:
+    punto 2: generar un archivo binario cuando lees
 
 
     */
