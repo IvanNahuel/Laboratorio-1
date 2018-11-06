@@ -13,14 +13,17 @@
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 {
+
+
     //aca iria el parser y llamo al parser de tipo texto
+
 
     /**
     abre el archivo y se lo paso a "parser_EmployeeFromText" de biblioteca "Parser"
     */
 
 
-
+    //cerrar los archivos
     return 1;
 }
 
@@ -36,7 +39,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
     return 1;
 
 
-
+    //cerrar los archivos
 }
 /** \brief Alta de empleados
  *
