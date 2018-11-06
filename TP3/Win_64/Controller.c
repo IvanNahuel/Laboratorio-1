@@ -11,11 +11,26 @@
  * \return int
  *
  */
-int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
-{
+int controller_loadFromText(char* path , LinkedList* pArrayListEmployee){
+    FILE *pFile;
+    pFile = fopen(path,"r");
+
+    //llamo a la funcion Parser employee y le paso el puntero a file si es distinto a NULO
+
+    if (pFile!=NULL){
+        parser_EmployeeFromText(pFile);
+        //le paso la lista
+
+    }
+
+
+
+
+
 
 
     //aca iria el parser y llamo al parser de tipo texto
+
 
 
     /**
@@ -34,8 +49,7 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
  * \return int
  *
  */
-int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
-{
+int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee){
     return 1;
 
 
@@ -48,8 +62,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
  * \return int
  *
  */
-int controller_addEmployee(LinkedList* pArrayListEmployee)
-{
+int controller_addEmployee(LinkedList* pArrayListEmployee){
     return 1;
 
 
@@ -61,8 +74,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
  * \return int
  *
  */
-int controller_editEmployee(LinkedList* pArrayListEmployee)
-{
+int controller_editEmployee(LinkedList* pArrayListEmployee){
     return 1;
 
 
@@ -74,8 +86,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
  * \return int
  *
  */
-int controller_removeEmployee(LinkedList* pArrayListEmployee)
-{
+int controller_removeEmployee(LinkedList* pArrayListEmployee){
     return 1;
 
 
@@ -88,8 +99,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
  * \return int
  *
  */
-int controller_ListEmployee(LinkedList* pArrayListEmployee)
-{
+int controller_ListEmployee(LinkedList* pArrayListEmployee){
     return 1;
 
 
@@ -101,8 +111,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
  * \return int
  *
  */
-int controller_sortEmployee(LinkedList* pArrayListEmployee)
-{
+int controller_sortEmployee(LinkedList* pArrayListEmployee){
     return 1;
 
 
@@ -115,8 +124,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
  * \return int
  *
  */
-int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
-{
+int controller_saveAsText(char* path , LinkedList* pArrayListEmployee){
     return 1;
 
 
@@ -130,8 +138,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  * \return int
  *
  */
-int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
-{
+int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee){
     return 1;
 
 

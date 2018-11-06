@@ -29,9 +29,8 @@ struct LinkedList
     Node* pFirstNode;
     int size;
 }typedef LinkedList;
+
 #endif
-
-
 
 //Publicas
 LinkedList* ll_newLinkedList(void);

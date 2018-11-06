@@ -28,10 +28,10 @@ int employee_setNombre(Employee* this,char* nombre){
     }
     return retorno;
 }
-int employee_getNombre(Employee* this,char* nombre){
-
-
-
+char* employee_getNombre(Employee* this,char* nombre){
+    if (this!=NULL){
+        return this->nombre;
+    }
 }
 int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas){
     int retorno=-1;

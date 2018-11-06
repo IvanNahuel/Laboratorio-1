@@ -19,8 +19,7 @@
 *****************************************************/
 
 
-int main()
-{
+int main(){
     int option = 0;
     LinkedList* listaEmpleados = ll_newLinkedList();
 
@@ -34,13 +33,16 @@ int main()
 
     */
 
-
-
     do{
         switch(option)
         {
             case 1:
                 controller_loadFromText("data.csv",listaEmpleados);
+
+
+
+
+
                 //
                 break;
         }

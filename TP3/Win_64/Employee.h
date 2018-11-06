@@ -24,7 +24,7 @@ int employee_setId(Employee* this,int id);
 int employee_getId(Employee* this,int* id);
 
 int employee_setNombre(Employee* this,char* nombre);
-int employee_getNombre(Employee* this,char* nombre);
+char* employee_getNombre(Employee* this,char* nombre);
 
 int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas);
 int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas);
