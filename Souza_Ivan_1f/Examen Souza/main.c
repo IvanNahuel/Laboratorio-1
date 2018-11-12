@@ -20,8 +20,8 @@ int main()
     int *PcodigoJuegoCont;
     PcodigoJuegoCont=&codigoJuegoCont;
 
-    int flagBajaModificarJuegos=0;
-    int flagBajaModificarClientes=0;
+    int flagBajaModificarJuegos=1;          //IMPORTANTE VOLVER A CAMBIAR A "0", ESTA EN 1 PARA HACER PRUEBAS
+    int flagBajaModificarClientes=1;        //IMPORTANTE VOLVER A CAMBIAR A "0", ESTA EN 1 PARA HACER PRUEBAS
 
     int codigoClienteCont=0;
     int* PcodigoClienteCont;
@@ -41,6 +41,7 @@ int main()
     initAlquileres(alquileres,LEN);
 
     HarcodeoDeAlgunasFunciones(juegos,clientes,PcodigoJuegoCont,PcodigoClienteCont);
+    HarcodeoDeAlquileres(alquileres);
 
 
     do{
@@ -171,12 +172,9 @@ int main()
 
             //promedio total de los importes de los juegos alquilados
             PromedioYTotalJuegos(alquileres,juegos,LEN);
-            //CantidadJuegosMenorImporte(promedio,juegos,LEN);  //<---------no anda
-            //printf("%f",promedio);
-
-            ClientesJuegoDeterminado(juegos,LEN,clientes,alquileres);
-            JuegosClientesDeterminado(juegos,LEN,clientes,alquileres);
-            //JuegosMenosAlquilados(juegos,alquileres,LEN);     //<---------no anda
+            //ClientesJuegoDeterminado(juegos,LEN,clientes,alquileres);     ///DEBUG DESCOMENTAR DESPUES
+            //JuegosClientesDeterminado(juegos,LEN,clientes,alquileres);    ///DEBUG
+            JuegosMenosAlquilados(juegos,alquileres,LEN);     //<---------no anda
             JuegosEnFechaDeterminada(juegos,alquileres,LEN);
             ClientesEnFechaDeterminada(clientes,alquileres,LEN);
             SortMoreEficient(juegos,LEN);

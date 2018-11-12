@@ -5,7 +5,7 @@
 typedef struct{
 int codigoJuego;
 char descripcion[51];
-int importe;
+float importe;
 int isEmpty;
 }eJuegos;
 

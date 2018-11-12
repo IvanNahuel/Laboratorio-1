@@ -340,6 +340,52 @@ void HarcodeoDeAlgunasFunciones(eJuegos*juegos,eClientes*clientes,int* codigoJue
 
 }
 
+void HarcodeoDeAlquileres(eAlquileres*alquileres){
+
+alquileres[0].CodigoAlquiler =0;
+alquileres[0].CodigoJuego =1;
+alquileres[0].CodigoCliente=0;
+alquileres[0].fecha.anio =2018;
+alquileres[0].fecha.mes = 8;
+alquileres[0].fecha.dia =25;
+alquileres[0].isEmpty =0;
+
+alquileres[1].CodigoAlquiler =1;
+alquileres[1].CodigoJuego =1;
+alquileres[1].CodigoCliente=1;
+alquileres[1].fecha.anio =2018;
+alquileres[1].fecha.mes = 5;
+alquileres[1].fecha.dia =13;
+alquileres[1].isEmpty =0;
+
+alquileres[2].CodigoAlquiler =2;
+alquileres[2].CodigoJuego =0;
+alquileres[2].CodigoCliente=1;
+alquileres[2].fecha.anio =2018;
+alquileres[2].fecha.mes = 5;
+alquileres[2].fecha.dia =14;
+alquileres[2].isEmpty =0;
+
+alquileres[2].CodigoAlquiler =3;
+alquileres[2].CodigoJuego =0;
+alquileres[2].CodigoCliente=1;
+alquileres[2].fecha.anio =2018;
+alquileres[2].fecha.mes = 5;
+alquileres[2].fecha.dia =14;
+alquileres[2].isEmpty =0;
+
+alquileres[2].CodigoAlquiler =4;
+alquileres[2].CodigoJuego =0;
+alquileres[2].CodigoCliente=1;
+alquileres[2].fecha.anio =2018;
+alquileres[2].fecha.mes = 5;
+alquileres[2].fecha.dia =14;
+alquileres[2].isEmpty =0;
+
+}
+
+
+
 int ImprimirMenuPrincipalYObtenerRespuesta(){
     int respuesta;
     int flag=1;
@@ -489,15 +535,12 @@ void PromedioYTotalJuegos(eAlquileres*alquileres,eJuegos*juegos,int len){
             //tengo que buscar el codigo de juego y sumar su importe
             printf("\nEntro al for");
             cont++;
-            acumProm = (float)juegos[alquileres[i].CodigoJuego].importe+acumProm;
+            acumProm = juegos[alquileres[i].CodigoJuego].importe+acumProm;
         }
     }
     promedio=acumProm/cont;
     printf("\nA)-la suma total de alquileres es: %d y el promedio es %.2f",acumProm,promedio);
 
-    //CantidadJuegosMenorImporte(promedio,juegos,len);
-}
-void CantidadJuegosMenorImporte(float promedio,eJuegos*juegos,int len){
     printf("\n\n%f",promedio);
     int j;
     printf("\nB)-La cantidad de juegos cuyo importe no superan el promedio son: \n");
@@ -506,7 +549,9 @@ void CantidadJuegosMenorImporte(float promedio,eJuegos*juegos,int len){
              printf("\n%2d     %18s      %4d",juegos[j].codigoJuego,juegos[j].descripcion,juegos[j].importe);
         }
     }
+
 }
+
 void ClientesJuegoDeterminado(eJuegos*juegos,int len,eClientes*clientes,eAlquileres*alquileres){
     int i;
     printf("\n\nC)-------Clientes que alquilaron un juego determinado--------");
@@ -565,14 +610,18 @@ void JuegosMenosAlquilados(eJuegos*juegos,eAlquileres*alquileres,int len){
     }
     for (k=0;k<len;k++){
         if (k==0){
-            minimo=auxContParalelo[i];
-            indiceCodigoDeJuegoMenor=auxCodigosJuegos[i];
+            minimo=auxContParalelo[k];
+            printf("\nMinimo es=%d",auxContParalelo[k]);
+            indiceCodigoDeJuegoMenor=auxCodigosJuegos[k];
         }
-        if (auxContParalelo[i]<minimo){
-            minimo=auxContParalelo[i];
-            indiceCodigoDeJuegoMenor=auxCodigosJuegos[i];
+        if (auxContParalelo[k]<minimo){
+            printf("\nEntro aca en el indice %d",i);
+            minimo=auxContParalelo[k];
+            indiceCodigoDeJuegoMenor=auxCodigosJuegos[k];
         }
     }
+    printf("\nel indice del juego menor es %d",indiceCodigoDeJuegoMenor);
+
     int z;
     for(z=0;z<10;z++){
         printf("\n%d",auxContParalelo[z]);
