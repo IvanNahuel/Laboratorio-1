@@ -18,20 +18,16 @@
 
 #ifndef __LINKEDLIST
 #define __LINKEDLIST
-struct Node
-{
+struct Node{
     void* pElement;
     struct Node* pNextNode;
 }typedef Node;
 
-struct LinkedList
-{
+struct LinkedList{
     Node* pFirstNode;
     int size;
 }typedef LinkedList;
 #endif
-
-
 
 //Publicas
 LinkedList* ll_newLinkedList(void);

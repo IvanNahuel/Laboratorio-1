@@ -38,7 +38,6 @@ int ll_len(LinkedList* this)
     if (this!=NULL){
     returnAux = this->size;
     }
-
     return returnAux;
 }
 
@@ -56,7 +55,7 @@ static Node* getNode(LinkedList* this, int nodeIndex){
     int i;
 
     if (this!=NULL && nodeIndex>=0 && nodeIndex < ll_len(this)){
-        for (i=0;i<ll_len(this);i++){
+        for (i=0;i<=nodeIndex;i++){
             if (i==0){
                 pNode = this->pFirstNode;
             }else {
@@ -66,7 +65,6 @@ static Node* getNode(LinkedList* this, int nodeIndex){
     }
     return pNode;
 }
-
 /** \brief  Permite realizar el test de la funcion getNode la cual es privada
  *
  * \param this LinkedList* Puntero a la lista
@@ -90,14 +88,19 @@ Node* test_getNode(LinkedList* this, int nodeIndex)
                         ( 0) Si funciono correctamente
  *
  */
-static int addNode(LinkedList* this, int nodeIndex,void* pElement)
-{
-    int returnAux = -1;
+static int addNode(LinkedList* this, int nodeIndex,void* pElement){
 
+    int returnAux = -1;
+    int i;
+
+    Node*pNode;
+    if (this!=NULL && nodeIndex >=0 && nodeIndex < ll_len(this)){
+        pNode = getNode(this,nodeIndex);    //puntero a un index determinado
+        pNode->pElement = pElement;
+        returnAux =0;
+    }
     return returnAux;
 }
-
-
 /** \brief Permite realizar el test de la funcion addNode la cual es privada
  *
  * \param this LinkedList* Puntero a la lista
@@ -120,8 +123,7 @@ int test_addNode(LinkedList* this, int nodeIndex,void* pElement)
                         ( 0) Si funciono correctamente
  *
  */
-int ll_add(LinkedList* this, void* pElement)
-{
+int ll_add(LinkedList* this, void* pElement){
     int returnAux = -1;
 
     return returnAux;
