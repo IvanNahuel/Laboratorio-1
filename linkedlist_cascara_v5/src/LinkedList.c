@@ -31,8 +31,7 @@ LinkedList* ll_newLinkedList(void)
  * \return int Retorna (-1) si el puntero es NULL o la cantidad de elementos de la lista
  *
  */
-int ll_len(LinkedList* this)
-{
+int ll_len(LinkedList* this){
     int returnAux = -1;
 
     if (this!=NULL){
@@ -89,15 +88,38 @@ Node* test_getNode(LinkedList* this, int nodeIndex)
  *
  */
 static int addNode(LinkedList* this, int nodeIndex,void* pElement){
-
     int returnAux = -1;
-    int i;
+    Node* prev;
+    Node* next;
+    Node* nuevoNodo;
 
-    Node*pNode;
-    if (this!=NULL && nodeIndex >=0 && nodeIndex < ll_len(this)){
-        pNode = getNode(this,nodeIndex);    //puntero a un index determinado
-        pNode->pElement = pElement;
-        returnAux =0;
+    if( this != NULL){
+        if(nodeIndex >= 0 && nodeIndex <= ll_len(this)){
+            nuevoNodo = (Node*)malloc(sizeof(Node));    //creame un espacio de memoria para NODO
+            if(nuevoNodo != NULL){                      //si el espacio de memoria (NUEVO) ES NO NULO
+                nuevoNodo->pElement = pElement;         //el *nuevo nodo, campo pElement es igual al param
+                nuevoNodo->pNextNode = NULL;            //*nuevo nodo siguiente nodo, es NULO
+
+                if(nodeIndex == 0){                             //si el indice PARAM ES CERO
+                    nuevoNodo->pNextNode = this->pFirstNode;    //*nuevo nodo el siguiente nodo, es el primero
+                    this->pFirstNode = nuevoNodo;               //de THIS el primer nodo es la estructura *nuevo nodo
+                }
+                else{                                           //si no es 0 el indice
+                    prev = this->pFirstNode;                    //*prev es igual a this->primerNodo (PRIMER NODO)
+                    next = prev->pNextNode;                     //*next es igual a *prev del siguiente nodo
+
+                    while( nodeIndex > 1){                      //mientras nodo index sea mayor a 1
+                        prev  = next;                           //*prev es igual al siguiente
+                        next  = prev->pNextNode;                //*next es igual a prev->nextNode
+                        nodeIndex--;                            //index --
+                    }
+                    prev->pNextNode = nuevoNodo;                //*prev->pNextNode es igual a nuevo nodo
+                    nuevoNodo->pNextNode = next;                //*nuevo nodo->nextNode = next
+                }
+                this->size++;                                   //incremento el size
+                returnAux = 0;
+            }
+        }
     }
     return returnAux;
 }
@@ -126,6 +148,10 @@ int test_addNode(LinkedList* this, int nodeIndex,void* pElement)
 int ll_add(LinkedList* this, void* pElement){
     int returnAux = -1;
 
+    if (this!=NULL){
+        addNode(this,this->size,pElement);
+        returnAux =0;
+    }
     return returnAux;
 }
 
@@ -346,6 +372,5 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     int returnAux =-1;
 
     return returnAux;
-
 }
 
