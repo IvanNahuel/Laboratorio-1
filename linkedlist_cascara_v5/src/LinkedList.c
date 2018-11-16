@@ -163,9 +163,24 @@ int ll_add(LinkedList* this, void* pElement){
                             (pElement) Si funciono correctamente
  *
  */
-void* ll_get(LinkedList* this, int index)
-{
+void* ll_get(LinkedList* this, int index){
     void* returnAux = NULL;
+
+
+
+    Node*pNodoAux;
+    Node*pFirstState;
+    int count=0;
+    pFirstState = this->pFirstNode;
+
+    /*
+    if (this!=NULL && index >=0 && index <= ll_len(this)){
+        if (index==0){
+            //returnAux = pFirstState->pElement;      //no vamos a tener problemas en retornar el primer elemento
+            printf("Entro aca");
+        }
+
+    }*/
 
     return returnAux;
 }
@@ -183,7 +198,17 @@ void* ll_get(LinkedList* this, int index)
 int ll_set(LinkedList* this, int index,void* pElement)
 {
     int returnAux = -1;
+    Node*pAuxiliar;
 
+    if (this!=NULL && index>=0 && index >ll_len(this)){
+        //modifica un elemento de la lista
+        //debo recorrerca atravez del indice,
+        //una vez encontrada debo modificarla
+        pAuxiliar = getNode(this,index);
+        pAuxiliar->pElement = pElement;
+
+        returnAux =0;
+    }
     return returnAux;
 }
 
