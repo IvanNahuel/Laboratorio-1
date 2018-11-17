@@ -216,8 +216,8 @@ int ll_set(LinkedList* this, int index,void* pElement)
         pAuxiliar = getNode(this,index);
         if (pAuxiliar!=NULL)
         {
-        pAuxiliar->pElement = pElement;
-        returnAux = 0;
+            pAuxiliar->pElement = pElement;
+            returnAux = 0;
         }
 
     }
@@ -237,53 +237,57 @@ int ll_remove(LinkedList* this,int index)
 {
     int returnAux = -1;
     int i;
-    Node*pNextNodeAux;
-    Node*pFirsSate;
-    Node*NextNextNode;
+    Node*pNode;
+    Node*pNodeDelete;
 
-    pFirsSate=this->pFirstNode;
-    pNextNodeAux = pFirsSate->pNextNode;
+    Node*PFirst;
+    Node*PSiguiente;
 
-    if (this!=NULL && index >=0 && index <=ll_len(this))
+
+    if (this!=NULL && index >=0 && index <ll_len(this))
     {
-        for (i=0; i<ll_len(this); i++)
+    PFirst = this->pFirstNode;
+    PSiguiente = PFirst->pNextNode;
+    pNodeDelete = getNode(this,index);
+        if (index==0)
+        {   //si quiero eliminar el cero debo decirle a this que el primer nodo es el siguiente
+            this->pFirstNode =PSiguiente;
+            returnAux = 0;
+        }
+            //si quiero eliminar el ultimo elemento debo decirle que el anterior apunte a null
+        else if (index==ll_len(this)){
+            pNode = getNode(this,index-1);
+            pNode->pNextNode = NULL;
+            returnAux = 0;
+        }
+        else
         {
-            NextNextNode = pNextNodeAux;
-
-            if (index==0)
-            {
-                this->pFirstNode = NextNextNode; //aca iria a apuntar al siguiente del siguiente
-            }
-            //si la posicion actual es igual a (index-1) y distinto de cero
-            if (i==(index-1)&&index!=0)
-            {
-                pNextNodeAux = NextNextNode;
-
-            }
-            else
-            {
-                pNextNodeAux = pNextNodeAux->pNextNode;
-            }
-            returnAux=0;
+            //si quiero eliminar uno del medio debo decir que el anterior apunte al que le
+            //sigue del que quiero eliminar
+            pNode = getNode(this,index-1);
+            Node*pNodeAux = getNode(this,index+2);
+            pNode->pNextNode =pNodeAux;
+            returnAux = 0;
         }
     }
+    free(pNodeDelete);
 
     //tengo que obtener el elemento anterior al indice y el siguiente
     //y setear el pNextNode
     //osea conectar (el index-1) y decirle que el siguiente es (el index +1)
-
     return returnAux;
 }
 /** \brief Elimina todos los elementos de la lista
- *
- * \param this LinkedList* Puntero a la lista
- * \return int Retorna  (-1) Error: si el puntero a la lista es NULL
-                        ( 0) Si funciono correctamente
- *
- */
+*
+* \param this LinkedList* Puntero a la lista
+* \return int Retorna  (-1) Error: si el puntero a la lista es NULL
+                            ( 0) Si funciono correctamente
+*
+*/
 int ll_clear(LinkedList* this)
 {
     int returnAux = -1;
+
 
     return returnAux;
 }
