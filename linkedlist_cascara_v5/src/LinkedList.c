@@ -239,26 +239,27 @@ int ll_remove(LinkedList* this,int index)
     int i;
     Node*pNode;
     Node*pNodeDelete;
-
     Node*PFirst;
     Node*PSiguiente;
-
-
     if (this!=NULL && index >=0 && index <ll_len(this))
     {
-    PFirst = this->pFirstNode;
-    PSiguiente = PFirst->pNextNode;
-    pNodeDelete = getNode(this,index);
+        PFirst = this->pFirstNode;
+        PSiguiente = PFirst->pNextNode;
+        pNodeDelete = getNode(this,index);
         if (index==0)
-        {   //si quiero eliminar el cero debo decirle a this que el primer nodo es el siguiente
+        {
+            //si quiero eliminar el cero debo decirle a this que el primer nodo es el siguiente
             this->pFirstNode =PSiguiente;
             returnAux = 0;
+            this->size--;
         }
-            //si quiero eliminar el ultimo elemento debo decirle que el anterior apunte a null
-        else if (index==ll_len(this)){
+        //si quiero eliminar el ultimo elemento debo decirle que el anterior apunte a null
+        else if (index==ll_len(this))
+        {
             pNode = getNode(this,index-1);
             pNode->pNextNode = NULL;
             returnAux = 0;
+            this->size--;
         }
         else
         {
@@ -268,10 +269,10 @@ int ll_remove(LinkedList* this,int index)
             Node*pNodeAux = getNode(this,index+2);
             pNode->pNextNode =pNodeAux;
             returnAux = 0;
+            this->size--;
         }
     }
     free(pNodeDelete);
-
     //tengo que obtener el elemento anterior al indice y el siguiente
     //y setear el pNextNode
     //osea conectar (el index-1) y decirle que el siguiente es (el index +1)
@@ -287,6 +288,22 @@ int ll_remove(LinkedList* this,int index)
 int ll_clear(LinkedList* this)
 {
     int returnAux = -1;
+    Node *pFirstNode;
+    Node *NextNode;
+
+    pFirstNode = this->pFirstNode;
+    NextNode = pFirstNode->pNextNode;
+
+    while (NextNode !=NULL || pFirstNode !=NULL)
+    {
+        //aca iriamos llamando a remove hasta que se termine
+
+
+
+    }
+
+
+
 
 
     return returnAux;
@@ -302,7 +319,12 @@ int ll_clear(LinkedList* this)
 int ll_deleteLinkedList(LinkedList* this)
 {
     int returnAux = -1;
-    //liberar con Free() la lista en general
+
+    if (this!=NULL){
+        //llamado  ala FUNCION QUE ELIMINA TODO Y DESPUES LIBERAR EL ESPACIO DE MEMORIA (THIS)
+        free(this);
+        returnAux =0;
+    }
 
     return returnAux;
 }
@@ -318,8 +340,24 @@ int ll_deleteLinkedList(LinkedList* this)
 int ll_indexOf(LinkedList* this, void* pElement)
 {
     int returnAux = -1;
+    int i;
+    //recorrer el array y comparar elementos si son iguales retornar el indice
+    if (this!=NULL)
+    {
+        Node*pNode = this->pFirstNode;
 
-
+        for (i=0; i<ll_len(this); i++)
+        {
+            if (pNode->pElement == pElement)
+            {
+                returnAux = i;
+            }
+            else
+            {
+                pNode = pNode->pNextNode;
+            }
+        }
+    }
     return returnAux;
 }
 
@@ -334,7 +372,6 @@ int ll_indexOf(LinkedList* this, void* pElement)
 int ll_isEmpty(LinkedList* this)
 {
     int returnAux = -1;
-
     if (ll_len(this)==0 && this!=NULL)
     {
         returnAux = 1;
