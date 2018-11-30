@@ -3,6 +3,7 @@
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
+#include "utn.h"
 
 /****************************************************
     Menu:
@@ -19,33 +20,51 @@
 *****************************************************/
 
 
-int main(){
-    int option = 0;
+int main()
+{
+    int caso;
     LinkedList* listaEmpleados = ll_newLinkedList();
 
-    /**
-    punto 1: hacer el parser del archivo, levantar los datos quemados en el archivo
-    en memporia (PARSER)
-    #leo un archivo->lo lleno a la estructura (resimido)
+    do
+    {
+        caso = utn_menuGetNumero(caso, "\n\nIngrese operacion a realizar: ", "\nError Reingrese dato valido");
 
-    punto 2: generar un archivo binario cuando lees
-
-
-    */
-
-    do{
-        switch(option)
+        switch(caso)
         {
-            case 1:
-                controller_loadFromText("data.csv",listaEmpleados);
-
-
-
-
-
-                //
-                break;
+        case 1:
+            controller_loadFromText("data.csv", listaEmpleados);
+            break;
+        case 2:
+            controller_loadFromBinary("data.bin", listaEmpleados);
+            break;
+        case 3:
+            controller_addEmployee(listaEmpleados);
+            break;
+        case 4:
+            controller_editEmployee(listaEmpleados);
+            break;
+        case 5:
+            controller_removeEmployee(listaEmpleados);
+            break;
+        case 6:
+            controller_ListEmployee(listaEmpleados);
+            break;
+        case 7:
+            controller_sortEmployee(listaEmpleados);
+            break;
+        case 8:
+            controller_loadFromText("data.csv", listaEmpleados);
+            break;
+        case 9:
+            controller_saveAsBinary("data.bin", listaEmpleados);
+            break;
+        case 10:
+            ll_deleteLinkedList(listaEmpleados);
+            break;
         }
-    }while(option != 10);
+
+    }
+    while(caso != 10);
+
     return 0;
 }

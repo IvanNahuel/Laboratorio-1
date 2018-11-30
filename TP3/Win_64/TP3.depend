@@ -53,36 +53,95 @@
 	"LinkedList.h"
 	"Employee.h"
 
-1541541685 source:c:\users\alumno\desktop\tp3\win_64\controller.c
+1541815612 source:d:\users\hoshii-manteca\documents\cosillas de hoshii\utn\tp3\win_64\controller.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
+	"parser.h"
 
-1541545705 c:\users\alumno\desktop\tp3\win_64\linkedlist.h
+1533133022 d:\users\hoshii-manteca\documents\cosillas de hoshii\utn\tp3\win_64\linkedlist.h
 
-1541544317 c:\users\alumno\desktop\tp3\win_64\employee.h
+1541815126 d:\users\hoshii-manteca\documents\cosillas de hoshii\utn\tp3\win_64\employee.h
 
-1541462980 source:c:\users\alumno\desktop\tp3\win_64\main.c
+1533133022 d:\users\hoshii-manteca\documents\cosillas de hoshii\utn\tp3\win_64\parser.h
+
+1541815126 source:d:\users\hoshii-manteca\documents\cosillas de hoshii\utn\tp3\win_64\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
+	"utn.h"
 
-1541541685 c:\users\alumno\desktop\tp3\win_64\controller.h
+1533133022 d:\users\hoshii-manteca\documents\cosillas de hoshii\utn\tp3\win_64\controller.h
 
-1541541686 source:c:\users\alumno\desktop\tp3\win_64\parser.c
+1541791527 source:d:\users\hoshii-manteca\documents\cosillas de hoshii\utn\tp3\win_64\parser.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
 
-1541544278 source:c:\users\alumno\desktop\tp3\win_64\employee.c
+1541817866 source:d:\users\hoshii-manteca\documents\cosillas de hoshii\utn\tp3\win_64\employee.c
 	<stdio.h>
 	<stdlib.h>
+	<ctype.h>
 	<string.h>
 	"LinkedList.h"
+	"Employee.h"
+
+1541791545 source:d:\users\hoshii-manteca\documents\cosillas de hoshii\utn\tp3\win_64\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"utn.h"
+
+1541791545 d:\users\hoshii-manteca\documents\cosillas de hoshii\utn\tp3\win_64\utn.h
+
+1543211860 source:c:\users\ivan nahuel\desktop\tp3\win_64\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+
+1543211860 c:\users\ivan nahuel\desktop\tp3\win_64\linkedlist.h
+
+1543211860 c:\users\ivan nahuel\desktop\tp3\win_64\employee.h
+
+1543211860 c:\users\ivan nahuel\desktop\tp3\win_64\parser.h
+
+1543211860 source:c:\users\ivan nahuel\desktop\tp3\win_64\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1543584060 source:c:\users\ivan nahuel\desktop\tp3\win_64\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1543211860 source:c:\users\ivan nahuel\desktop\tp3\win_64\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"utn.h"
+
+1543211860 c:\users\ivan nahuel\desktop\tp3\win_64\utn.h
+
+1543583850 source:c:\users\ivan nahuel\desktop\tp3\win_64\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
+	"utn.h"
+
+1543211860 c:\users\ivan nahuel\desktop\tp3\win_64\controller.h
 

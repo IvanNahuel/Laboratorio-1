@@ -10,29 +10,35 @@
  * \return int
  *
  */
-int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee){
-    //levanta los datos y los convierte en sus respectivos TIPOS DE DATOS
-    char var1[50],var3[50],var2[50],var4[50];
-    int r;
-    int flag=0;
+int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
+{
+    char idAux[2000];
+    char nombreAux[2000];
+    char horasAux[2000];
+    char sueldoAux[2000];
+    Employee* employeeAux;
+    int cant;
+    int retorno = 0;
 
-do{
-    r = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",var1,var2,var3,var4);
+    cant = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n", idAux, nombreAux, horasAux, sueldoAux);
 
-    if(r==4 && flag==1){
-    Initialize(&arrayPersonas[i],atoi(var4),var3,var2 ,atoi(var1));
-    i++;
+    while(!feof(pFile))
+    {
+        cant = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n", idAux, nombreAux, horasAux, sueldoAux);
+
+        if(cant == 4)
+        {
+            employeeAux = employee_newParametros(idAux, nombreAux, horasAux, sueldoAux);
+            if(employeeAux != NULL)
+            {
+                ll_add(pArrayListEmployee, employeeAux);
+                retorno = 1;
+            }
+        }
     }
-
-    else if (r!=4&&flag==1){
-        break;
-    }
-    flag=1;
-
-    }while(!feof(pFile));
-
-    return 1;
+    return retorno;
 }
+
 /** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo binario).
  *
  * \param path char*
@@ -40,7 +46,23 @@ do{
  * \return int
  *
  */
-int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee){
+int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
+{
+    Employee* employeAux;
+    int cant;
+    int retorno = 0;
 
-    return 1;
+    while(!feof(pFile))
+    {
+        employeAux = employee_new();
+        cant = fread(employeAux, sizeof(Employee), 1, pFile);
+
+        if(employeAux != NULL && cant == 1)
+        {
+            ll_add(pArrayListEmployee, employeAux);
+            retorno = 1;
+        }
+    }
+
+    return retorno;
 }

@@ -6,25 +6,24 @@ typedef struct
     char nombre[128];
     int horasTrabajadas;
     int sueldo;
-}Employee;
+} Employee;
 
 Employee* employee_new();
-
-/**pido memoria para nueva persona y dentro de ella inicializo la structura con los
- datos
-*/
-
-Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr);
-//initialize, similar
-
-void employee_delete();
-//
+Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr, char* sueldoStr);
+int employee_empAddNew(LinkedList* pArrayList);
+int employee_empSaveText(char* path, LinkedList* pArrayList);
+int employee_empSaveBinari(char* path, LinkedList* pArrayList);
+int employee_empOrderList(void* nombreUno, void* nombreDos);
+void employee_empList(LinkedList* pArrayList);
+void employee_empRemove(LinkedList* pArrayList);
+void employee_empEdit(LinkedList* pArrayList);
+void employee_delete(Employee* this);
 
 int employee_setId(Employee* this,int id);
 int employee_getId(Employee* this,int* id);
 
 int employee_setNombre(Employee* this,char* nombre);
-char* employee_getNombre(Employee* this,char* nombre);
+int employee_getNombre(Employee* this,char* nombre);
 
 int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas);
 int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas);
