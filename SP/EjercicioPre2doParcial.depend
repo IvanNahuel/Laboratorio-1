@@ -1,0 +1,198 @@
+# depslib dependency file v1.0
+1543272323 source:d:\souza_ivan_1f_sp\sp\empleado.c
+	"Empleado.h"
+
+1543273386 d:\souza_ivan_1f_sp\sp\empleado.h
+
+1543274114 source:d:\souza_ivan_1f_sp\sp\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Empleado.h"
+	"LinkedList.h"
+	"LinkedList.c"
+	"Parser.h"
+
+1542466112 d:\souza_ivan_1f_sp\sp\linkedlist.h
+
+1543273460 d:\souza_ivan_1f_sp\sp\parser.h
+	"LinkedList.h"
+
+1543274144 source:d:\souza_ivan_1f_sp\sp\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Empleado.h"
+
+1543270682 d:\souza_ivan_1f_sp\sp\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1544025195 source:c:\users\ivan nahuel\desktop\examen\souza_ivan_1f_sp\sp\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Empleado.h"
+	"LinkedList.h"
+	"LinkedList.c"
+	"Parser.h"
+
+1544023904 c:\users\ivan nahuel\desktop\examen\souza_ivan_1f_sp\sp\empleado.h
+
+1544025227 c:\users\ivan nahuel\desktop\examen\souza_ivan_1f_sp\sp\linkedlist.h
+
+1544025504 c:\users\ivan nahuel\desktop\examen\souza_ivan_1f_sp\sp\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1543273462 c:\users\ivan nahuel\desktop\examen\souza_ivan_1f_sp\sp\parser.h
+	"LinkedList.h"
+
+1544023919 source:c:\users\ivan nahuel\desktop\examen\souza_ivan_1f_sp\sp\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"Empleado.h"
+
+1544021012 source:c:\users\ivan nahuel\desktop\examen\souza_ivan_1f_sp\sp\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Empleado.h"
+
+1544132546 source:c:\users\alumno\desktop\examen\souza_ivan_1f_sp\sp\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"Empleado.h"
+
+1544132546 c:\users\alumno\desktop\examen\souza_ivan_1f_sp\sp\empleado.h
+
+1544132547 source:c:\users\alumno\desktop\examen\souza_ivan_1f_sp\sp\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Empleado.h"
+	"LinkedList.h"
+	"LinkedList.c"
+	"Parser.h"
+
+1544132547 c:\users\alumno\desktop\examen\souza_ivan_1f_sp\sp\linkedlist.h
+
+1544133163 c:\users\alumno\desktop\examen\souza_ivan_1f_sp\sp\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1544133068 c:\users\alumno\desktop\examen\souza_ivan_1f_sp\sp\parser.h
+	"LinkedList.h"
+
+1544132547 source:c:\users\alumno\desktop\examen\souza_ivan_1f_sp\sp\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Empleado.h"
+
+1544133135 source:d:\souza_ivan_1f\recuperatorio segundo parcial\segundo parcial recuperatorio\parser.c
+
+1544135841 source:d:\souza_ivan_1f\examen\souza_ivan_1f_sp\sp\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"Empleado.h"
+	"Parser.h"
+
+1544135953 d:\souza_ivan_1f\examen\souza_ivan_1f_sp\sp\empleado.h
+
+1544136266 d:\souza_ivan_1f\examen\souza_ivan_1f_sp\sp\parser.h
+
+1544132547 d:\souza_ivan_1f\examen\souza_ivan_1f_sp\sp\linkedlist.h
+
+1544136086 source:d:\souza_ivan_1f\examen\souza_ivan_1f_sp\sp\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Empleado.h"
+	"LinkedList.h"
+	"LinkedList.c"
+	"Parser.h"
+
+1544133163 d:\souza_ivan_1f\examen\souza_ivan_1f_sp\sp\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1544135980 source:d:\souza_ivan_1f\examen\souza_ivan_1f_sp\sp\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Empleado.h"
+
+1544135841 source:c:\users\alumno\desktop\souza_ivan_1f_sp\sp\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"Empleado.h"
+	"Parser.h"
+
+1544135953 c:\users\alumno\desktop\souza_ivan_1f_sp\sp\empleado.h
+
+1544136266 c:\users\alumno\desktop\souza_ivan_1f_sp\sp\parser.h
+
+1544136086 source:c:\users\alumno\desktop\souza_ivan_1f_sp\sp\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Empleado.h"
+	"LinkedList.h"
+	"LinkedList.c"
+	"Parser.h"
+
+1544132547 c:\users\alumno\desktop\souza_ivan_1f_sp\sp\linkedlist.h
+
+1544133163 c:\users\alumno\desktop\souza_ivan_1f_sp\sp\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1544135980 source:c:\users\alumno\desktop\souza_ivan_1f_sp\sp\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Empleado.h"
+
+1544137037 source:d:\sp\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"Empleado.h"
+	"Parser.h"
+
+1544135953 d:\sp\empleado.h
+
+1544136266 d:\sp\parser.h
+
+1544137255 source:d:\sp\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Empleado.h"
+	"LinkedList.h"
+	"LinkedList.c"
+	"Parser.h"
+
+1544132547 d:\sp\linkedlist.h
+
+1544133163 d:\sp\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1544137955 source:d:\sp\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Empleado.h"
+
