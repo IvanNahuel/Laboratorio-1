@@ -1,0 +1,39 @@
+# depslib dependency file v1.0
+1544740327 source:d:\souza_ivan1f_sp\segundoparcialdirecta\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"LinkedList.c"
+	"Parser.h"
+	"utn.h"
+
+1544741455 d:\souza_ivan1f_sp\segundoparcialdirecta\linkedlist.h
+
+1544740411 d:\souza_ivan1f_sp\segundoparcialdirecta\parser.h
+
+1544740119 d:\souza_ivan1f_sp\segundoparcialdirecta\utn.h
+
+1544740335 source:d:\souza_ivan1f_sp\segundoparcialdirecta\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"LinkedList.c"
+	"utn.h"
+	"Parser.h"
+
+1544741390 d:\souza_ivan1f_sp\segundoparcialdirecta\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1544740331 source:d:\souza_ivan1f_sp\segundoparcialdirecta\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"LinkedList.c"
+	"Parser.h"
+	"utn.h"
+
