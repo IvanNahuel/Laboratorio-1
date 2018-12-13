@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "LinkedList.h"
-#include "LinkedList.c"
 #include "Parser.h"
 #include "utn.h"
 
@@ -20,7 +19,8 @@ eEnvios*envios_newParametros(char*idAux,char* nombreAux,char*idCamion,char*zonaD
     kmRecorridosAux = atoi(kmRecorridos);
     tipoEntregaAux = atoi(tipoEntrega);
 
-    if (Envios!=NULL){
+    if (Envios!=NULL)
+    {
         //sets
         envios_setId(Envios,id);
         envios_setNombre(Envios,nombreAux);
@@ -117,6 +117,85 @@ int envios_TipoEntrega(eEnvios* this,int tipo)
     }
     return retorno;
 }
+int ImprimirMenu()
+{
+    int respuesta;
+    printf("\n1-Cargar Archivos");
+    printf("\n2-Imprimir Envios");
+    printf("\n3-Calcular Costos");
+    printf("\n4-Generar archivo de Costos segun la zona");
+    printf("\n5-Imprimir Lista de zonas");
+    printf("\n6-Salir");
+
+    printf("\nIngrese la opcion deseada: ");
+    scanf("%d",&respuesta);
+    while(respuesta<0 || respuesta>6)
+    {
+        printf("\nError Ingrese la opcion deseada: ");
+        scanf("%d",&respuesta);
+    }
+    return respuesta;
+}
+
+void envios_ListarEnvios (LinkedList*this)
+{
+    eEnvios*auxEnvios;
+    int i;
+    int cant;
+    cant = ll_len(this);
+
+    for (i=0; i<cant; i++)
+    {
+        auxEnvios = ll_get(this,i);
+        printf("\n%20s     %d      %10s",auxEnvios->nombreProducto,auxEnvios->idCamion,auxEnvios->zonaDestino);
+    }
+}
+int envios_CostosEntregas(int numero)
+{
+    int retorno;
+    if (numero==0)      //NORMAL
+    {
+        retorno = 250;
+    }
+    else if (numero ==1)
+    {
+        retorno =420;
+    }
+    else
+    {
+        retorno =75;
+    }
+    return retorno;
+}
+
+//aca le pasamos la lista que sera
+void envios_calcularCostos (void*e)
+{
+    eEnvios*this2 = (eEnvios*)e;        //apunta al alemento que esta en la lista
+    int costosAux;
+
+    if (this2!=NULL)
+    {
+        if (this2->kmRecorridos<50)
+        {
+            //si los kilometros rrecorridos son menores a 50 multiplicar por 100 los kilometros
+            costosAux = this2->kmRecorridos*100;
+            costosAux = costosAux + envios_CostosEntregas(this2->tipoEntrega);
+            this2->costoEnvio = costosAux;
+            //FALTA SETTEAR
+        }
+        else
+        {
+            costosAux = this2->kmRecorridos*50;
+            costosAux = costosAux + envios_CostosEntregas(this2->tipoEntrega);
+            this2->costoEnvio = costosAux;
+            //FALTA SETTEAR
+        }
+    }
+
+    //ll_set(this,indice,this2);      //seteo
+}
+
 
 
 

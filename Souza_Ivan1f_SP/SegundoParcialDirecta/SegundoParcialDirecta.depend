@@ -1,10 +1,9 @@
 # depslib dependency file v1.0
-1544740327 source:d:\souza_ivan1f_sp\segundoparcialdirecta\main.c
+1544742978 source:d:\souza_ivan1f_sp\segundoparcialdirecta\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"LinkedList.h"
-	"LinkedList.c"
 	"Parser.h"
 	"utn.h"
 
@@ -12,28 +11,33 @@
 
 1544740411 d:\souza_ivan1f_sp\segundoparcialdirecta\parser.h
 
-1544740119 d:\souza_ivan1f_sp\segundoparcialdirecta\utn.h
+1544743659 d:\souza_ivan1f_sp\segundoparcialdirecta\utn.h
 
-1544740335 source:d:\souza_ivan1f_sp\segundoparcialdirecta\parser.c
+1544742359 source:d:\souza_ivan1f_sp\segundoparcialdirecta\parser.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"LinkedList.h"
-	"LinkedList.c"
 	"utn.h"
 	"Parser.h"
 
-1544741390 d:\souza_ivan1f_sp\segundoparcialdirecta\linkedlist.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-
-1544740331 source:d:\souza_ivan1f_sp\segundoparcialdirecta\utn.c
+1544741610 d:\souza_ivan1f_sp\segundoparcialdirecta\linkedlist.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"LinkedList.h"
-	"LinkedList.c"
+
+1544742781 source:d:\souza_ivan1f_sp\segundoparcialdirecta\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
 	"Parser.h"
 	"utn.h"
+
+1544743704 source:d:\souza_ivan1f_sp\segundoparcialdirecta\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
 

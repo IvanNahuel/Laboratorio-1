@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "LinkedList.h"
-#include "LinkedList.c"
+
 #include "utn.h"
 #include "Parser.h"
 
@@ -24,7 +24,7 @@ int parser_envios(char* fileName, LinkedList* listaEnvios)
     int cont=0;
 
     FILE* pFile;
-    pFile = fopen(fileName, "r");      //lectura texto
+    pFile = fopen("data.csv", "r");      //lectura texto
 
     if (pFile!=NULL)
     {
@@ -33,7 +33,7 @@ int parser_envios(char* fileName, LinkedList* listaEnvios)
         while(!feof(pFile))
         {
         cant = fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", idAux,nombreProductos,idCamionAux,zonaDestinoAux,kmRecorridosAux,tipoEntregaAux);
-            printf("\n%s    %s     %s", idAux, nombreProductos);
+            printf("\n%s    %s     ", idAux, nombreProductos);
 
             if(cant == 6 && flag)
             {
