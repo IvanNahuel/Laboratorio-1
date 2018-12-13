@@ -1,0 +1,24 @@
+
+
+
+void em_calcularSueldo (void*e,LinkedList*this){
+	Empleado*this = (Empleado*)e;
+	if (this!=NULL){
+		if (this->horas <=170){
+		this->sueldo = 180;
+		} else if ( this->horas > 177 && this->horas <=209){
+		this->sueldo = 270;
+		} else if ( this->horas > 209 && this->horas <=240){ 
+		this->sueldo = 360
+		}
+	}
+}
+
+int al_map (LinkedList*this,int (*pfunc)(void*str),int indice){
+	void*AuxThing = ll_get (this,indice);
+	if (this!=NULL && AuxThing !=NULL){
+		pfunc (AuxThing,this);
+		retorno =0;
+	}
+return retorno;
+}
